@@ -21,7 +21,7 @@ public class HomeActivity extends AppCompatActivity {
         prescriptionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent scriptIntent =
             }
         });
 
