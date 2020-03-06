@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "709344366156",
+    "firebase_url": "https://healthnotes-ud-ongwere.firebaseio.com",
+    "project_id": "healthnotes-ud-ongwere",
+    "storage_bucket": "healthnotes-ud-ongwere.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:709344366156:android:baa51a84fc5a8104306ee9",
+        "android_client_info": {
+          "package_name": "edu.udayton.cps499.healthnotes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "709344366156-vjn0ev60mqspafsrhi9okd9ji5dqkh9g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.udayton.cps499.healthnotes",
+            "certificate_hash": "7c932f4890909a5afbf71eadcb49e70ab14ddbce"
+          }
+        },
+        {
+          "client_id": "709344366156-43dr7pn6gi4lrgdgjdc2gkb1ht1nt8fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAt8e0-pYUR6UnW5o9HCyaWYH06ObdR9wI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "709344366156-43dr7pn6gi4lrgdgjdc2gkb1ht1nt8fu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

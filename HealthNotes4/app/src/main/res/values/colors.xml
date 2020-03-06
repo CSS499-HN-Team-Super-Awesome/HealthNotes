@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#4285F4</color>
+    <color name="colorPrimaryDark">#4285F4</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="title_color">#4285F4</color>
+
+    <color name="hnBlueDark">#041B6C</color>
+    <color name="hnBlue">#3662AC</color>
+    <color name="hnBlueLight">#4285F4</color>
+
+    <color name="hnRedDark">#A70E0E</color>
+    <color name="hnRed">#B00000</color>
+    <color name="hnRedLight">#FF0000</color>
+
+    <color name="hnGreenDark">#027900</color>
+    <color name="hnGreen">#188706</color>
+    <color name="hnGreenLight">#18A800</color>
+
+    <color name="hnGreyDark">#797979</color>
+    <color name="hnGreyLight">#D4D4D4</color>
+
+    <color name="hnWhite">#FFFFFF</color>
+
+    <color name="hnYellow">#FAFF00</color>
+
+</resources>
