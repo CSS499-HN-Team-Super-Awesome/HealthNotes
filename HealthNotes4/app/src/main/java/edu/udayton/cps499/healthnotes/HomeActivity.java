@@ -23,8 +23,12 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 <<<<<<< HEAD
+<<<<<<< HEAD
                 Intent scriptIntent = new Intent(HomeActivity.this, PrescriptionsActivity.class);
                 startActivity(scriptIntent);
+=======
+
+>>>>>>> parent of b918005... edits added PrescriptionsActivity
 =======
 
 >>>>>>> parent of b918005... edits added PrescriptionsActivity
