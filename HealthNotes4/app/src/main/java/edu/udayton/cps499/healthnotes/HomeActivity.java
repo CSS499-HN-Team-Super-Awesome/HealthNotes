@@ -25,8 +25,12 @@ public class HomeActivity extends AppCompatActivity {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
                 Intent scriptIntent = new Intent(HomeActivity.this, PrescriptionsActivity.class);
                 startActivity(scriptIntent);
+=======
+
+>>>>>>> parent of b918005... edits added PrescriptionsActivity
 =======
 
 >>>>>>> parent of b918005... edits added PrescriptionsActivity
