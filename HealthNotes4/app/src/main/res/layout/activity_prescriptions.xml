@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".PrescriptionsActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/prescriptionsTopToolar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:subtitleTextAppearance="@style/TextAppearance.AppCompat.Large"
+        app:subtitleTextColor="@color/hnWhite"
+        app:titleTextColor="#FFFFFF" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Prescriptions"
+            android:textColor="@color/hnWhite"
+            android:textSize="30sp"></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
