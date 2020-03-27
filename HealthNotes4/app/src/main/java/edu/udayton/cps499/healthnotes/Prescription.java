@@ -11,8 +11,7 @@ public class Prescription {
     private String scriptName;
     private String scriptStrength;
     private String scriptInstructions;
-    private Date scriptDatePrescribed;
-    private int scriptProviderIndex; //index in an array or arrayList of the provider
+    private String scriptDatePrescribed;
     private Address scriptPharmacy;
     private String scriptNumber;
     private int scriptNumberRefills;
@@ -30,12 +29,12 @@ public class Prescription {
 
     public Prescription() {    }//end constructor
 
-    public Prescription(String name, String strength, String instructions, Date datePrescribed, int providerIndex) {
+    public Prescription(String name, String strength, String instructions, String datePrescribed, int providerIndex) {
         scriptName = name;
         scriptStrength = strength;
         scriptInstructions = instructions;
         scriptDatePrescribed = datePrescribed;
-        scriptProviderIndex = providerIndex;
+        //index in an array or arrayList of the provider
     }//end constructor with basic info
 
     public void setName(String name) { this.scriptName = name; }
@@ -47,8 +46,8 @@ public class Prescription {
     public void setInstructions(String instructions) { this.scriptInstructions = instructions; }
     public String getInstructions() { return scriptInstructions; }
 
-    public void setDatePrescribed(Date datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
-    public Date getDatePrescribed() { return scriptDatePrescribed; }
+    public void setDatePrescribed(String datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
+    public String getDatePrescribed() { return scriptDatePrescribed; }
 
     //provider setters and getters.
 
