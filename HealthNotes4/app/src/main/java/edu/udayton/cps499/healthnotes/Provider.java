@@ -1,6 +1,7 @@
 package edu.udayton.cps499.healthnotes;
 
 import android.location.Address;
+import java.util.Date;
 
 public class Provider {
     private String providerSalutation = "Default";  //ie: Dr, Mr., Mrs., LPN.,

@@ -11,16 +11,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static final String TAG = "PrescRecViewAdapter";
 
-    private ArrayList<Provider> providerList = new ArrayList<Provider>();
-    private ArrayList<Prescription> scriptList = new ArrayList<Prescription>();
+    private ArrayList<Provider> providers = new ArrayList<Provider>();
+    private ArrayList<Prescription> scripts = new ArrayList<Prescription>();
     //load lists with default test data
 //    private ArrayList<Provider> providerList = new ArrayList<Provider> () {
 //        {
@@ -51,8 +48,8 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
 
     public PrescriptionsRecyclerViewAdapter(Context mContext, ArrayList<Provider> providerList, ArrayList<Prescription> scriptList) {
-        this.providerList = providerList;
-        this.scriptList = scriptList;
+        this.providers = providerList;
+        this.scripts = scriptList;
         this.mContext = mContext;
     }
 
@@ -73,16 +70,14 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         TextView name = holder.itemView.findViewById(R.id.nameTextView);
         TextView instructions = holder.itemView.findViewById(R.id.instructionsTextView);
 
-        Prescription item = scriptList.get(position);
-
-        date.setText(item.getDatePrescribed().toString());
-        name.setText(item.getName());
-        instructions.setText(item.getInstructions());
+        date.setText(scripts.get(position).getDatePrescribed().toString());
+        name.setText(scripts.get(position).getName());
+        instructions.setText(scripts.get(position).getInstructions());
     }
 
     @Override
     public int getItemCount() {
-        return scriptList.size();
+        return scripts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

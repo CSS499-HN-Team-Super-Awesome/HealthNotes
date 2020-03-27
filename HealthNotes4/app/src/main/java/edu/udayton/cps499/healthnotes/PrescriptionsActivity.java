@@ -16,38 +16,13 @@ import java.util.Date;
 
 public class PrescriptionsActivity extends AppCompatActivity {
     //VARS
-    private static final String TAG = "PerscActivity";
-
+    private static final String TAG = "PrescActivity";
 
     //create example data
     //load lists with default test data
     private ArrayList<Provider> providerList = new ArrayList<>();
-//    {
-//        {
-//            add(new Provider("Dr.", "John Doe", 123, "Some St", "Dayton",
-//                    "45420", "9375551212", "Cardiologist"));
-//            add(new Provider("Dr.", "Jane Doe", 321, "This Way", "Kettering",
-//                    "45429", "9375552121", "General Practice"));
-//            add(new Provider("NP.", "Joseph Doe", 42, "Answer Blvd", "Springboro",
-//                    "45066", "9371234567", "Neurology"));
-//            add(new Provider("Dr.", "Janet Doe", 88, "Special Ave", "Dayton",
-//                    "45420", "9377654321", "Psychiatrist"));
-//        }
-//    };
-
     private ArrayList<Prescription> scriptList = new ArrayList<>();
-//    {
-//        {
-//            add(new Prescription("Amlodipine", "10mg", "1 pill once a day",new Date(2019,4,1), 0 ) );
-//            add(new Prescription("Amoxicillin", "500mg", "1 pill three times a day",
-//                    new Date(2020,3,20), 1 ) );
-//            add(new Prescription("Oxycodone", "5-325mg", "1 pill every 4 hrs as needed",
-//                    new Date(2019,3,17), 2 ) );
-//            add(new Prescription("Sertraline", "50mg", "1 pill once a day",
-//                    new Date(2019,4,15), 3 ) );
-//
-//        }
-//    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +38,8 @@ public class PrescriptionsActivity extends AppCompatActivity {
             }
         });
 
-        //initArrayList();
+        //initialize the ArrayLists
+        initArrayList(); //<---adding items to the ArrayLists breaks the program
 
         initRecyclerView(); //initialize the recyclerview
 

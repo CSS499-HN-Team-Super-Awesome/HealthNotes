@@ -11,7 +11,7 @@ public class Prescription {
     private String scriptName;
     private String scriptStrength;
     private String scriptInstructions;
-    private String scriptDatePrescribed;
+    private String scriptDatePrescribed;  //change back to Date when it's working
     private Address scriptPharmacy;
     private String scriptNumber;
     private int scriptNumberRefills;
@@ -70,9 +70,6 @@ public class Prescription {
     public String getPharmacyCity() { return scriptPharmacy.getLocality(); }
     public String getPharmacyPostalCode() { return scriptPharmacy.getPostalCode(); }
     public String getPharmacyPhone() { return scriptPharmacy.getPhone(); }
-
-
-
 
     public void take() {
 
