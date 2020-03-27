@@ -39,7 +39,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
         });
 
         //initialize the ArrayLists
-        initArrayList(); //<---adding items to the ArrayLists breaks the program
+//        initArrayList(); //<---adding items to the ArrayLists breaks the program
 
         initRecyclerView(); //initialize the recyclerview
 
@@ -67,7 +67,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
     }
 
     private void initRecyclerView(){
-        Log.d(TAG, "initRecyclerView: init recyclerviewr");
+        Log.d(TAG, "initRecyclerView: init recyclerview");
 
         RecyclerView recyclerView = findViewById(R.id.prescriptionsListRecyclerView);
         PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, providerList, scriptList);
