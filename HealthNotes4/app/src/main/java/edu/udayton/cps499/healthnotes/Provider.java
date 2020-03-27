@@ -10,9 +10,9 @@ public class Provider {
     public Provider() {} //end default constructor
 
     public Provider(String salutation, Address address, String specialty) {
-        providerSalutation = salutation;
+        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
         providerAddress = address;
-        providerSpecialty = specialty;
+        providerSpecialty = specialty; //General Practice, Cardiologist, etc
     }//end constructor
 
     public String getProviderSalutation() { return providerSalutation; }
