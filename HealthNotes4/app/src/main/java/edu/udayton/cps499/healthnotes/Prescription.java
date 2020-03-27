@@ -7,20 +7,19 @@ import java.sql.Time;
 import java.util.Date;
 
 public class Prescription {
-    int id;
-    String scriptName;
-    String scriptStrength;
-    String scriptInstructions;
-    String scriptDatePrescribed;
-    Provider scriptProvider;
-    Address scriptPharmacy;
-    String scriptNumber;
-    int scriptNumberRefills;
-    Date scriptDateIssued;
-    Date scriptDateExpired;
-    Date scriptDateRefillBy;
-    Date scriptLastTakenDate;
-    Date scriptNextTakeDate;
+    private int id;
+    private String scriptName;
+    private String scriptStrength;
+    private String scriptInstructions;
+    private String scriptDatePrescribed;  //change back to Date when it's working
+    private Address scriptPharmacy;
+    private String scriptNumber;
+    private int scriptNumberRefills;
+    private Date scriptDateIssued;
+    private Date scriptDateExpired;
+    private Date scriptDateRefillBy;
+    private Date scriptLastTakenDate;
+    private Date scriptNextTakeDate;
 
     public Date getScriptLastTakenDate() {
         scriptLastTakenDate.setTime(2358);
@@ -30,12 +29,13 @@ public class Prescription {
 
     public Prescription() {    }//end constructor
 
-    public Prescription(String name, String strength, String instructions, String datePrescribed) {
+    public Prescription(String name, String strength, String instructions, String datePrescribed, int providerIndex) {
         scriptName = name;
         scriptStrength = strength;
         scriptInstructions = instructions;
         scriptDatePrescribed = datePrescribed;
-    }//end constructor
+        //index in an array or arrayList of the provider
+    }//end constructor with basic info
 
     public void setName(String name) { this.scriptName = name; }
     public String getName() { return scriptName; }
@@ -70,9 +70,6 @@ public class Prescription {
     public String getPharmacyCity() { return scriptPharmacy.getLocality(); }
     public String getPharmacyPostalCode() { return scriptPharmacy.getPostalCode(); }
     public String getPharmacyPhone() { return scriptPharmacy.getPhone(); }
-
-
-
 
     public void take() {
 

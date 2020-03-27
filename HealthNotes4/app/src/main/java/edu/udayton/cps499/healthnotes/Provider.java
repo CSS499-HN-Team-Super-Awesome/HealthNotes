@@ -1,19 +1,45 @@
 package edu.udayton.cps499.healthnotes;
 
 import android.location.Address;
+import java.util.Date;
 
 public class Provider {
-    private String providerSalutation;
-    private Address providerAddress;
-    private String providerSpecialty;
+    private String providerSalutation = "Default";  //ie: Dr, Mr., Mrs., LPN.,
+    private Address providerAddress = setDefaultAddress();
+    private String providerSpecialty = "DefaultSpecialty";  //General Practice, Cardiologist, etc
+
+    //Constructors
+
+    private Address setDefaultAddress() {
+        Address address = null;
+        address.setFeatureName("Default Name");
+        address.setAddressLine(0, "Default St");
+        address.setLocality("Default City");
+        address.setPostalCode("00000");
+        address.setPhone("000-000-0000");
+        return address;
+    }
 
     public Provider() {} //end default constructor
 
     public Provider(String salutation, Address address, String specialty) {
-        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
+        providerSalutation = salutation;
         providerAddress = address;
-        providerSpecialty = specialty; //General Practice, Cardiologist, etc
+        providerSpecialty = specialty;
     }//end constructor
+
+    public Provider(String salutation, String name, int number, String street, String city,
+                    String zip, String phone, String specialty){
+        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
+        providerAddress.setFeatureName(name);
+        providerAddress.setAddressLine(number, street);
+        providerAddress.setLocality(city);
+        providerAddress.setPostalCode(zip);
+        providerAddress.setPhone(phone);
+        providerSpecialty = specialty;
+    }//end constructor to set everything from individual bits.
+
+    //getters and setters
 
     public String getProviderSalutation() { return providerSalutation; }
     public void setProviderSalutation(String salutation) { providerSalutation = salutation; }

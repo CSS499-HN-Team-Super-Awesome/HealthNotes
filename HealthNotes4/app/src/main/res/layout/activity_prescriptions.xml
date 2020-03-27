@@ -6,4 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".PrescriptionsActivity">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/prescriptionsTopToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Prescriptions"
+            android:textColor="@color/hnWhite"
+            android:textSize="30sp"></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:text="Home"
+        app:layout_constraintStart_toStartOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintTop_toTopOf="@+id/prescriptionsTopToolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/prescriptionsBottomToolbar"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/listButton"
+            android:layout_width="100dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="8dp"
+            android:text="List"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/prescriptionsBottomToolbar"
+            app:layout_constraintTop_toTopOf="@+id/prescriptionsBottomToolbar"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/editButton"
+            android:layout_width="100dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Edit"
+            android:gravity="center"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="100dp"
+            android:layout_height="62dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/editButton"
+            app:layout_constraintTop_toTopOf="@+id/prescriptionsBottomToolbar"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/prescriptionsListRecyclerView"
+        android:layout_width="409dp"
+        android:layout_height="593dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/prescriptionsBottomToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prescriptionsTopToolbar" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

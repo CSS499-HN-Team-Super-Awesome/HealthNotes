@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">HealthNotes</string>
+
+    <!--Activity Titles-->
+    <string name="prescriptions_title">Prescriptions</string>
+
+
+    <!--Button Text-->
+    <string name="btn_home">Home</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_list">List</string>
+    <string name="btn_edit">Edit</string>
+    <string name="btn_take">Take</string>
+    <string name="btn_notes">Notes</string>
+    <string name="btn_info">Info</string>
+
+
+
+    <!--Default Text-->
+    <string name="app_default_txt">Default</string>
+
+
+    <!--notes-->
+    <string name="contentDesc_medImage">Image of Medicine</string>
+
+
 </resources>
