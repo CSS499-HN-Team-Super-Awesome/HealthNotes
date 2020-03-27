@@ -22,24 +22,10 @@ public class HomeActivity extends AppCompatActivity {
         prescriptionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
+
                 Intent scriptIntent = new Intent(HomeActivity.this, PrescriptionsActivity.class);
                 startActivity(scriptIntent);
-=======
 
->>>>>>> parent of b918005... edits added PrescriptionsActivity
-=======
-
->>>>>>> parent of b918005... edits added PrescriptionsActivity
-=======
-
->>>>>>> parent of b918005... edits added PrescriptionsActivity
-=======
-
->>>>>>> parent of b918005... edits added PrescriptionsActivity
             }
         });
 
