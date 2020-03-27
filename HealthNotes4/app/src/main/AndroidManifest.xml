@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SubHome1Activity"></activity>
+        <activity android:name=".SubHome2Activity"></activity>
+        <activity android:name=".SubHome1Activity" />
         <activity
             android:name=".PrescriptionsActivity"
             android:theme="@style/AppTheme.NoActionBar" />

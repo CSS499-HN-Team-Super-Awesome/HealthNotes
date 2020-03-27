@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SubHome1Activity">
+    tools:context=".SubHome2Activity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar2"
@@ -26,53 +26,37 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!--First button (Appointments)-->
+    <!--First button (Medical Conditions)-->
     <Button
-        android:id="@+id/appointmentsButton"
+        android:id="@+id/medicalConditionsButton"
         android:layout_width="350dp"
         android:layout_height="150dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="200dp"
         android:layout_marginLeft="33dp"
         android:background="@color/hnGreyDark"
         android:ellipsize="none"
-        android:text="Appointments"
+        android:text="Medical Conditions"
         android:textColor="@color/hnWhite"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
-    <!--Second button (Doctors)-->
+    <!--Second button (Notes)-->
     <Button
-        android:id="@+id/doctorsButton"
+        android:id="@+id/notesButton"
         android:layout_width="350dp"
         android:layout_height="150dp"
-        android:layout_marginTop="300dp"
+        android:layout_marginTop="400dp"
         android:layout_marginLeft="33dp"
         android:background="@color/hnBlue"
         android:ellipsize="none"
-        android:text="Doctors"
+        android:text="Notes"
         android:textColor="@color/hnWhite"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appointmentsButton" />
-
-    <!--Third button (Medical History)-->
-    <Button
-        android:id="@+id/medicalHistoryButton"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
-        android:layout_marginLeft="33dp"
-        android:layout_marginTop="500dp"
-        android:background="@color/hnBlueDark"
-        android:ellipsize="none"
-        android:text="Medical History"
-        android:textColor="@color/hnWhite"
-        android:textSize="34sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/doctorsButton" />
+        app:layout_constraintTop_toBottomOf="@+id/medicalConditionsButton" />
 
 </RelativeLayout>

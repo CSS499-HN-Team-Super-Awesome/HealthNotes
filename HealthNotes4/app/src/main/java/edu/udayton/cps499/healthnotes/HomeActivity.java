@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -41,8 +40,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // DOESN'T EXIST YET
-//                openSubHome2Activity();
+                openSubHome2Activity();
             }
         });
     }//end onCreate
@@ -61,12 +59,10 @@ public class HomeActivity extends AppCompatActivity {
 
     } // end openSubHome1Activity
 
-    // DOESN'T EXIST YET.
-//    // Navigates from Home -> SubHome2
-//    public void openSubHome2Activity() {
-//        Intent intent = new Intent(this, SubHome2Activity.class);
-//        startActivity(intent);
-//
-//    } // end openSubHome2Activity
+    // Navigates from Home -> SubHome2
+    public void openSubHome2Activity() {
+        Intent intent = new Intent(this, SubHome2Activity.class);
+        startActivity(intent);
 
-}//end homeActivity class
+    } // end openSubHome2Activity
+}//end HomeActivity class
