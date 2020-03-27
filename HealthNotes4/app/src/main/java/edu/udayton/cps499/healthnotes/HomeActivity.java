@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // This activity doesn't exist yet.
+                // DOESN'T EXIST YET
 //                openSubHome2Activity();
             }
         });
@@ -60,5 +60,13 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
 
     } // end openSubHome1Activity
+
+    // DOESN'T EXIST YET.
+//    // Navigates from Home -> SubHome2
+//    public void openSubHome2Activity() {
+//        Intent intent = new Intent(this, SubHome2Activity.class);
+//        startActivity(intent);
+//
+//    } // end openSubHome2Activity
 
 }//end homeActivity class
