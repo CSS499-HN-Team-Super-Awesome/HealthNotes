@@ -27,55 +27,53 @@
 
     </androidx.appcompat.widget.Toolbar>
 
-    <!--First button (Prescription Tracking)-->
+    <!--First button (Appointments)-->
     <Button
-        android:id="@+id/prescriptionButton"
+        android:id="@+id/appointmentsButton"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="33dp"
         android:background="@color/hnGreyDark"
         android:ellipsize="none"
-        android:text="Prescription Tracking"
+        android:text="Appointments"
         android:textColor="@color/hnWhite"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
-    <!--Second button (Medical Care & History)-->
+    <!--Second button (Doctors)-->
     <Button
-        android:id="@+id/medicalCareButton"
+        android:id="@+id/doctorsButton"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginTop="300dp"
         android:layout_marginLeft="33dp"
         android:background="@color/hnBlue"
         android:ellipsize="none"
-        android:text="Medical Care\n&amp;\nHistory"
+        android:text="Doctors"
         android:textColor="@color/hnWhite"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prescriptionButton" />
+        app:layout_constraintTop_toBottomOf="@+id/appointmentsButton" />
 
-    <!--Third button (Medical Conditions & Notes)-->
+    <!--Third button (Medical History)-->
     <Button
-        android:id="@+id/medicalConditionsButton"
+        android:id="@+id/medicalHistoryButton"
         android:layout_width="350dp"
         android:layout_height="150dp"
         android:layout_marginLeft="33dp"
         android:layout_marginTop="500dp"
         android:background="@color/hnBlueDark"
         android:ellipsize="none"
-        android:text="Medical Conditions\n&amp;\nNotes"
+        android:text="Medical History"
         android:textColor="@color/hnWhite"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/medicalCareButton" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/doctorsButton" />
 
 </RelativeLayout>

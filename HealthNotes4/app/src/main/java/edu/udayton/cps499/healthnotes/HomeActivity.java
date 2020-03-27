@@ -14,7 +14,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button prescriptionBtn = (Button) findViewById(R.id.perscriptionButton);
+        Button prescriptionBtn = (Button) findViewById(R.id.prescriptionButton);
         Button medCareBtn = (Button) findViewById(R.id.medicalCareButton);
         Button medConditionBtn = (Button) findViewById(R.id.medicalConditionsButton);
 
@@ -23,9 +23,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent scriptIntent = new Intent(HomeActivity.this, PrescriptionsActivity.class);
-                startActivity(scriptIntent);
-
+                openPrescriptionsActivity();
             }
         });
 
@@ -34,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                openSubHome1Activity();
             }
         });
 
@@ -42,10 +41,24 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                // This activity doesn't exist yet.
+//                openSubHome2Activity();
             }
         });
-
-
-
     }//end onCreate
+
+    // Navigates from Home -> Prescriptions
+    public void openPrescriptionsActivity() {
+        Intent intent = new Intent(this, PrescriptionsActivity.class);
+        startActivity(intent);
+
+    } // end openPrescriptionsActivity
+
+    // Navigates from Home -> SubHome1
+    public void openSubHome1Activity() {
+        Intent intent = new Intent(this, SubHome1Activity.class);
+        startActivity(intent);
+
+    } // end openSubHome1Activity
+
 }//end homeActivity class
