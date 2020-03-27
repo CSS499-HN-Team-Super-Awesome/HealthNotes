@@ -7,20 +7,20 @@ import java.sql.Time;
 import java.util.Date;
 
 public class Prescription {
-    int id;
-    String scriptName;
-    String scriptStrength;
-    String scriptInstructions;
-    String scriptDatePrescribed;
-    Provider scriptProvider;
-    Address scriptPharmacy;
-    String scriptNumber;
-    int scriptNumberRefills;
-    Date scriptDateIssued;
-    Date scriptDateExpired;
-    Date scriptDateRefillBy;
-    Date scriptLastTakenDate;
-    Date scriptNextTakeDate;
+    private int id;
+    private String scriptName;
+    private String scriptStrength;
+    private String scriptInstructions;
+    private Date scriptDatePrescribed;
+    private int scriptProviderIndex; //index in an array or arrayList of the provider
+    private Address scriptPharmacy;
+    private String scriptNumber;
+    private int scriptNumberRefills;
+    private Date scriptDateIssued;
+    private Date scriptDateExpired;
+    private Date scriptDateRefillBy;
+    private Date scriptLastTakenDate;
+    private Date scriptNextTakeDate;
 
     public Date getScriptLastTakenDate() {
         scriptLastTakenDate.setTime(2358);
@@ -30,12 +30,13 @@ public class Prescription {
 
     public Prescription() {    }//end constructor
 
-    public Prescription(String name, String strength, String instructions, String datePrescribed) {
+    public Prescription(String name, String strength, String instructions, Date datePrescribed, int providerIndex) {
         scriptName = name;
         scriptStrength = strength;
         scriptInstructions = instructions;
         scriptDatePrescribed = datePrescribed;
-    }//end constructor
+        scriptProviderIndex = providerIndex;
+    }//end constructor with basic info
 
     public void setName(String name) { this.scriptName = name; }
     public String getName() { return scriptName; }
@@ -46,8 +47,8 @@ public class Prescription {
     public void setInstructions(String instructions) { this.scriptInstructions = instructions; }
     public String getInstructions() { return scriptInstructions; }
 
-    public void setDatePrescribed(String datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
-    public String getDatePrescribed() { return scriptDatePrescribed; }
+    public void setDatePrescribed(Date datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
+    public Date getDatePrescribed() { return scriptDatePrescribed; }
 
     //provider setters and getters.
 

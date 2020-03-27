@@ -3,17 +3,32 @@ package edu.udayton.cps499.healthnotes;
 import android.location.Address;
 
 public class Provider {
-    private String providerSalutation;
+    private String providerSalutation;  //ie: Dr, Mr., Mrs., LPN.,
     private Address providerAddress;
-    private String providerSpecialty;
+    private String providerSpecialty;  //General Practice, Cardiologist, etc
+
+    //Constructors
 
     public Provider() {} //end default constructor
 
     public Provider(String salutation, Address address, String specialty) {
-        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
+        providerSalutation = salutation;
         providerAddress = address;
-        providerSpecialty = specialty; //General Practice, Cardiologist, etc
+        providerSpecialty = specialty;
     }//end constructor
+
+    public Provider(String salutation, String name, int number, String street, String city,
+                    String zip, String phone, String specialty){
+        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
+        providerAddress.setFeatureName(name);
+        providerAddress.setAddressLine(number, street);
+        providerAddress.setLocality(city);
+        providerAddress.setPostalCode(zip);
+        providerAddress.setPhone(phone);
+        providerSpecialty = specialty;
+    }//end constructor to set everything from individual bits.
+
+    //getters and setters
 
     public String getProviderSalutation() { return providerSalutation; }
     public void setProviderSalutation(String salutation) { providerSalutation = salutation; }
