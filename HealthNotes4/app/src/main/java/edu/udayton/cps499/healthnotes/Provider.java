@@ -1,72 +1,68 @@
 package edu.udayton.cps499.healthnotes;
 
-import android.location.Address;
-import java.util.Date;
-
 public class Provider {
-    private String providerSalutation = "Default";  //ie: Dr, Mr., Mrs., LPN.,
-    private Address providerAddress = setDefaultAddress();
-    private String providerSpecialty = "DefaultSpecialty";  //General Practice, Cardiologist, etc
+    private String salutation;
+    private String name;
+    private String specialty;
+    private String address1;
+    private String address2;
+    private String city;
+    private String state;
+    private String zip;
+    private String phone;
 
-    //Constructors
+    public Provider() { }//default constructor
 
-    private Address setDefaultAddress() {
-        Address address = null;
-        address.setFeatureName("Default Name");
-        address.setAddressLine(0, "Default St");
-        address.setLocality("Default City");
-        address.setPostalCode("00000");
-        address.setPhone("000-000-0000");
-        return address;
+    public Provider(String salutation, String name, String address, String city, String state,
+                    String zip, String phone, String specialty) {
+        this.salutation = salutation;
+        this.name = name;
+        this.specialty = specialty;
+        this.address1 = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phone = phone;
+    }//end constructor with 1address
+
+    //Setters:
+    public void setAddress1(String address1) {this.address1 = address1;  }
+    public void setAddress2(String address2) {this.address2 = address2; }
+    public void setCity(String city) { this.city = city; }
+    public void setState(String state) { this.state = state; }
+    public void setZip(String zip) { this.zip = zip; }
+    public void setPhone(String phone) { this.phone = phone; }
+
+    public void setSalutation(String salutation) {
+        this.salutation = salutation;
     }
 
-    public Provider() {} //end default constructor
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Provider(String salutation, Address address, String specialty) {
-        providerSalutation = salutation;
-        providerAddress = address;
-        providerSpecialty = specialty;
-    }//end constructor
+    public void setSpecialty(String specialty) {
+        this.specialty = specialty;
+    }
 
-    public Provider(String salutation, String name, int number, String street, String city,
-                    String zip, String phone, String specialty){
-        providerSalutation = salutation;  //ie: Dr, Mr., Mrs., LPN.,
-        providerAddress.setFeatureName(name);
-        providerAddress.setAddressLine(number, street);
-        providerAddress.setLocality(city);
-        providerAddress.setPostalCode(zip);
-        providerAddress.setPhone(phone);
-        providerSpecialty = specialty;
-    }//end constructor to set everything from individual bits.
 
-    //getters and setters
+    //Getters:
+    public String getAddress1() { return address1; }
+    public String getAddress2() { return address2; }
+    public String getCity() { return city; }
+    public String getState() { return state; }
+    public String getZip() { return zip; }
+    public String getPhone() { return phone; }
 
-    public String getProviderSalutation() { return providerSalutation; }
-    public void setProviderSalutation(String salutation) { providerSalutation = salutation; }
+    public String getSalutation() {
+        return salutation;
+    }
 
-    public String getProviderNameAndSalutation() { return providerSalutation + " " + providerAddress.getFeatureName(); }
+    public String getName() {
+        return name;
+    }
 
-    //public void setProvider(ProviderObject provider) { scriptProvider = provider; }
-    public void setProvider(String name, int number, String street, String city, String zip, String phone){
-        providerAddress.setFeatureName(name);
-        providerAddress.setAddressLine(number, street);
-        providerAddress.setLocality(city);
-        providerAddress.setPostalCode(zip);
-        providerAddress.setPhone(phone);
-    }//end set with all the goods
-    public void setProviderName(String name) { providerAddress.setFeatureName(name);}
-    public void setProviderAddress(int number, String street) { providerAddress.setAddressLine( number, street ); }
-    public void setProviderCity( String city ) { providerAddress.setLocality(city); }
-    public void setProviderPostalCode(String zip) { providerAddress.setPostalCode(zip);}
-    public void setProviderPhone(String phone) { providerAddress.setPhone(phone);}
-
-    public Provider getProvider() { return new Provider(providerSalutation, providerAddress, providerSpecialty); }
-    public String getProviderAddressLine() { return providerAddress.getAddressLine(0); }
-    public String getProviderCity() { return providerAddress.getLocality(); }
-    public String getProviderPostalCode() { return providerAddress.getPostalCode(); }
-    public String getProviderPhone() { return providerAddress.getPhone(); }
-
-    public String getProviderSpecialty() { return providerSpecialty; }
-    public void setProviderSpecialty(String specialty) { providerSpecialty = specialty; }
-
-}//end Provider class
+    public String getSpecialty() {
+        return specialty;
+    }
+}

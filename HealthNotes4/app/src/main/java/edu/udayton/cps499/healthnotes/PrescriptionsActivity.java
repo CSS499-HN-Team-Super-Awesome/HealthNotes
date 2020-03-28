@@ -10,9 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PrescriptionsActivity extends AppCompatActivity {
     //VARS
@@ -39,30 +37,30 @@ public class PrescriptionsActivity extends AppCompatActivity {
         });
 
         //initialize the ArrayLists
-//        initArrayList(); //<---adding items to the ArrayLists breaks the program
+        initArrayList(); //<---adding items to the ArrayLists breaks the program
 
         initRecyclerView(); //initialize the recyclerview
 
     } //end onCreate
 
     private void initArrayList() {
-        providerList.add(new Provider("Dr.", "John Doe", 123, "Some St", "Dayton",
+        providerList.add(new Provider("Dr.", "John Doe", "Some St", "Dayton", "Ohio",
                 "45420", "9375551212", "Cardiologist"));
-        providerList.add(new Provider("Dr.", "Jane Doe", 321, "This Way", "Kettering",
+        providerList.add(new Provider("Dr.", "Jane Doe", "This Way", "Kettering", "Ohio",
                 "45429", "9375552121", "General Practice"));
-        providerList.add(new Provider("NP.", "Joseph Doe", 42, "Answer Blvd", "Springboro",
+        providerList.add(new Provider("NP.", "Joseph Doe", "Answer Blvd", "Springboro", "Ohio",
                 "45066", "9371234567", "Neurology"));
-        providerList.add(new Provider("Dr.", "Janet Doe", 88, "Special Ave", "Dayton",
+        providerList.add(new Provider("Dr.", "Janet Doe", "Special Ave", "Dayton", "Ohio",
                 "45420", "9377654321", "Psychiatrist"));
 
         scriptList.add(new Prescription("Amlodipine", "10mg", "1 pill once a day",
-                "2019,4,1", 0 ) );
+                "2019,4,1", providerList.get(0) ) );
         scriptList.add(new Prescription("Amoxicillin", "500mg", "1 pill three times a day",
-                "2020,3,20", 1 ) );
+                "2020,3,20", providerList.get(1) ) );
         scriptList.add(new Prescription("Oxycodone", "5-325mg", "1 pill every 4 hrs as needed",
-                "2019,3,17", 2 ) );
+                "2019,3,17", providerList.get(2)) );
         scriptList.add(new Prescription("Sertraline", "50mg", "1 pill once a day",
-                "2019,4,15", 3 ) );
+                "2019,4,15", providerList.get(3) ) );
 
     }
 

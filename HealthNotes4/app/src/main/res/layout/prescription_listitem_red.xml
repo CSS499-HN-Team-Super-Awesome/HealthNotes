@@ -13,7 +13,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="1dp"
         android:layout_marginEnd="1dp"
-        android:background="@color/hnGreyLight"
+        android:background="@color/hnRed"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,7 +27,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Take at: "
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -38,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/takeAtLabelTextView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/takeAtDateTextView" />
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />

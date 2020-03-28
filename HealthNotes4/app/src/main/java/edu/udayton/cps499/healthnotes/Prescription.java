@@ -1,9 +1,5 @@
 package edu.udayton.cps499.healthnotes;
 
-import android.location.Address;
-
-import java.security.Provider;
-import java.sql.Time;
 import java.util.Date;
 
 public class Prescription {
@@ -11,15 +7,17 @@ public class Prescription {
     private String scriptName;
     private String scriptStrength;
     private String scriptInstructions;
-    private String scriptDatePrescribed;  //change back to Date when it's working
-    private Address scriptPharmacy;
+    private Date scriptDatePrescribed;  //change back to Date when it's working
+    private Provider scriptPharmacy;
     private String scriptNumber;
     private int scriptNumberRefills;
+    private int quantity;
     private Date scriptDateIssued;
     private Date scriptDateExpired;
     private Date scriptDateRefillBy;
     private Date scriptLastTakenDate;
     private Date scriptNextTakeDate;
+    private Provider scriptProvider;
 
     public Date getScriptLastTakenDate() {
         scriptLastTakenDate.setTime(2358);
@@ -29,12 +27,12 @@ public class Prescription {
 
     public Prescription() {    }//end constructor
 
-    public Prescription(String name, String strength, String instructions, String datePrescribed, int providerIndex) {
+    public Prescription(String name, String strength, String instructions, Date datePrescribed, Provider provider) {
         scriptName = name;
         scriptStrength = strength;
         scriptInstructions = instructions;
         scriptDatePrescribed = datePrescribed;
-        //index in an array or arrayList of the provider
+        scriptProvider = provider;
     }//end constructor with basic info
 
     public void setName(String name) { this.scriptName = name; }
@@ -46,30 +44,29 @@ public class Prescription {
     public void setInstructions(String instructions) { this.scriptInstructions = instructions; }
     public String getInstructions() { return scriptInstructions; }
 
-    public void setDatePrescribed(String datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
-    public String getDatePrescribed() { return scriptDatePrescribed; }
+    public void setDatePrescribed(Date datePrescribed) { this.scriptDatePrescribed = datePrescribed; }
+    public Date getDatePrescribed() { return scriptDatePrescribed; }
 
     //provider setters and getters.
+    public Provider getScriptProvider() {
+        return scriptProvider;
+    }
+
+    public void setScriptProvider(Provider scriptProvider) {
+        this.scriptProvider = scriptProvider;
+    }
 
 
     //pharmacy setters and getters.
-    public void setPharmacy(Address pharmacy) { scriptPharmacy = pharmacy; }
-    public void setPharmacy(String name, int number, String street, String city, String zip, String phone){
-        scriptPharmacy.setFeatureName(name);
-        scriptPharmacy.setAddressLine(number, street);
-        scriptPharmacy.setLocality(city);
-        scriptPharmacy.setPostalCode(zip);
-        scriptPharmacy.setPhone(phone);
-    }//end set with all the goods
-    public void setPharmacyAddress(int number, String street) { scriptPharmacy.setAddressLine( number, street ); }
-    public void setPharmacyCity( String city ) { scriptPharmacy.setLocality(city); }
-    public void setPharmacyPostalCode(String zip) { scriptPharmacy.setPostalCode(zip);}
-    public void setPharmacyPhone(String phone) { scriptPharmacy.setPhone(phone);}
-    public Address getPharmacy() { return scriptPharmacy; }
-    public String getPharmacyAddressLine() { return scriptPharmacy.getAddressLine(0); }
-    public String getPharmacyCity() { return scriptPharmacy.getLocality(); }
-    public String getPharmacyPostalCode() { return scriptPharmacy.getPostalCode(); }
-    public String getPharmacyPhone() { return scriptPharmacy.getPhone(); }
+    public Provider getScriptPharmacy() {
+        return scriptPharmacy;
+    }
+
+    public void setScriptPharmacy(Provider scriptPharmacy) {
+        this.scriptPharmacy = scriptPharmacy;
+    }
+
+
 
     public void take() {
 
