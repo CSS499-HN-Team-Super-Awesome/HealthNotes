@@ -10,25 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-import org.w3c.dom.Node;
+import android.widget.ImageButton;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Queue;
+
 
 public class PrescriptionsActivity extends AppCompatActivity {
     //VARS
@@ -38,6 +30,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
     //load lists with default test data
     private ArrayList<Provider> providerList = new ArrayList<>();
     private ArrayList<Prescription> scriptList = new ArrayList<>();
+    private ArrayList<Prescription> scriptListToTake = new ArrayList<>();
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -46,7 +39,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriptions);
 
-        Button homeBtn = findViewById(R.id.homeButton);
+        ImageButton homeBtn = findViewById(R.id.homeButton);
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +51,8 @@ public class PrescriptionsActivity extends AppCompatActivity {
         //initialize the ArrayLists
         initArrayList(); //<---adding items to the ArrayLists breaks the program
 
+        buildScriptTakeList(scriptList);
+
         //ArrayList<Prescription> listToTake = buildScriptTakeList(scriptList);
 
         initRecyclerView(); //initialize the recyclerview
@@ -66,6 +61,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initArrayList() {
+        Log.d(TAG, "initArrayList");
         providerList.add(new Provider("Dr.", "John Doe", "Some St", "Dayton", "Ohio",
                 "45420", "9375551212", "Cardiologist"));
         providerList.add(new Provider("Dr.", "Jane Doe", "This Way", "Kettering", "Ohio",
@@ -79,115 +75,114 @@ public class PrescriptionsActivity extends AppCompatActivity {
         int timingInterval, int timingAmount, boolean durationLimited, int durationInDays,
         boolean isAsNeeded, String asNeededFor, String notes)*/
         //LocalDateTime cal = LocalDateTime.of(2020, 3, 17, 0,0,0);
-        scriptList.add(new Prescription("Amlodipine", "10mg", "1 pill once a day",
-                LocalDateTime.of(2019,4,1,0,0,0), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
-                false, null, 2, 1, false, -1, false, "", "") ) );
-        scriptList.add(new Prescription("Amoxicillin", "500mg", "1 pill three times a day",
-                LocalDateTime.of(2020,3,25,0,0,0), providerList.get(1), new PrescriptionsInstruction(1, 1, "Pill", false,
-                null, 2, 3, false, -1, false, null, "" ) ) );
-        scriptList.add(new Prescription("Oxycodone", "5-325mg", "1 pill every 4 hrs as needed for pain.",
-                LocalDateTime.of(2019, 12, 5,0,0,0), providerList.get(2), new PrescriptionsInstruction(1, 1, "Pill",
-                false, null, 1, 4, false, -1, true, "pain", "Take with food.")) );
-        scriptList.add(new Prescription("Sertraline", "50mg", "1 pill once a day",
-                LocalDateTime.of(2020,2,1,0,0,0), providerList.get(3), new PrescriptionsInstruction(1, 1, "Pill", false,
-                null, 2, 1, false, -1, false, "", "") ) );
-    }
+
+        //OncePerDays(all options)
+        scriptList.add(new Prescription("OnePerDayMorning", "10mg", "1 pill once a day",
+                LocalDateTime.of(2019,4,1,0,0,1), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
+                false, null, 2, 1, false, -1, false, "", "", new int[] {1,0,0,0,0,0}) ) );
+//        scriptList.add(new Prescription("OnePerDayMidmorning", "10mg", "1 pill once a day",
+//                LocalDateTime.of(2019,4,1,0,0,1), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
+//                false, null, 2, 1, false, -1, false, "", "", new int[] {2,0,0,0,0,0}) ) );
+        scriptList.add(new Prescription("OnePerDayAfternoon", "10mg", "1 pill once a day",
+                LocalDateTime.of(2019,4,1,0,0,1), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
+                false, null, 2, 1, false, -1, false, "", "", new int[] {3,0,0,0,0,0}) ) );
+//        scriptList.add(new Prescription("OnePerDayMidafternoon", "10mg", "1 pill once a day",
+//                LocalDateTime.of(2019,4,1,0,0,1), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
+//                false, null, 2, 1, false, -1, false, "", "", new int[] {4,0,0,0,0,0}) ) );
+        scriptList.add(new Prescription("OnePerDayEvening", "10mg", "1 pill once a day",
+                LocalDateTime.of(2019,4,1,0,0,1), providerList.get(0), new PrescriptionsInstruction(1, 1, "Pill",
+                false, null, 2, 1, false, -1, false, "", "", new int[] {5,0,0,0,0,0}) ) );
+
+//        scriptList.add(new Prescription("OnePerDayNight", "50mg", "1 pill once a day",
+//                LocalDateTime.of(2020,2,1,0,0,1), providerList.get(3), new PrescriptionsInstruction(1, 1, "Pill", false,
+//                null, 2, 1, false, -1, false, "", "", new int[] {6,0,0,0,0,0}) ) );
+
+        //Pill three times a day
+        scriptList.add(new Prescription("OnePill3XperDay", "500mg", "1 pill three times a day",
+                LocalDateTime.of(2020,3,25,0,0,1), providerList.get(1), new PrescriptionsInstruction(1, 1, "Pill", false,
+                null, 2, 3, false, -1, false, null, "", new int[] {1,0,0,0,0,0} ) ) );
+
+        //Pill three times a day
+//        scriptList.add(new Prescription("OnePill4XperDay", "400mg", "1 pill three times a day",
+//                LocalDateTime.of(2020,3,25,0,0,1), providerList.get(1), new PrescriptionsInstruction(1, 1, "Pill", false,
+//                null, 2, 4, false, -1, false, null, "", new int[] {1,0,0,0,0,0} ) ) );
+
+
+        scriptList.add(new Prescription("Every4Hours", "5mg", "1 pill every 4 hrs as needed for pain.",
+                LocalDateTime.of(2019, 12, 5,0,0,1), providerList.get(2), new PrescriptionsInstruction(1, 1, "Pill",
+                false, null, 1, 4, false, -1, true, "pain", "Take with food.", new int[] {1,0,0,0,0,0})) );
+//        scriptList.add(new Prescription("Every6Hours", "5mg", "1 pill every 4 hrs as needed for pain.",
+//                LocalDateTime.of(2020, 4, 6,15,0,1), providerList.get(2), new PrescriptionsInstruction(1, 1, "Pill",
+//                false, null, 1, 6, false, -1, true, "pain", "Take with food.", new int[] {1,0,0,0,0,0})) );
+
+    }//end initArray
 
     private void initRecyclerView(){
         Log.d(TAG, "initRecyclerView: init recyclerview");
         RecyclerView.LayoutManager mLayoutManager = new
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         RecyclerView recyclerView = findViewById(R.id.prescriptionsListRecyclerView);
-        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, providerList, scriptList);
+        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, providerList, scriptListToTake);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(mLayoutManager);
     }
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private ArrayList<Prescription> buildScriptTakeList(ArrayList<Prescription> sourceList){
+    private void buildScriptTakeList(ArrayList<Prescription> sourceList){
 
-        int hoursToFigure = 36; //number of hours to build the list for.
-        ArrayList<Prescription> listToTake = new ArrayList<>();
-        Queue<Prescription> hourlyQueue = null;
-        Queue<Prescription> xPerDayQueue = null;
-        Queue<Prescription> everyXDaysQueue = null;
-        Queue<Prescription> asDirectedQueue = null;
-
+        int hoursToFigure = 18; //number of hours to build the list for.
+        //ArrayList<Prescription> listToTake = new ArrayList<>();
+        LocalDateTime dateCurrent = LocalDateTime.now();
+        LocalDateTime dateLimit = dateCurrent.plusHours(hoursToFigure);
 
         for (int x = 0; x < sourceList.size(); x++) {
-            LocalDateTime dateLastTaken = sourceList.get(x).getScriptLastTakenDate();
-            LocalDateTime dateToTake;
-            LocalDateTime dateCurrent = LocalDateTime.now();
+            LocalDateTime dateToTake = LocalDateTime.of(2010, 1, 1,0, 0, 0);
 
-            Prescription currentScript = sourceList.get(x);
-            PrescriptionsInstruction instructions = currentScript.getScriptInstruction();
+            Prescription currentScript = new Prescription(sourceList.get(x));
 
-            //act based on whether next use is within 36hours of now.
-            //timed intervals
-//            private final int EVERYHOURS = 1;
-//            private final int TIMESPERDAY = 2;
-//            private final int EVERYXDAYS = 3;
-//            private final int ASDIRECTED = 99;
-            //If instructions are for hourly
-            if ( (instructions.getTimingInterval() == 1)  ){
-                int hoursRemaining = hoursToFigure;
-                while (hoursRemaining > instructions.getTimingAmount()) {
-                    // If dateLastTaken is null or it plus the timingAmt is still less than the current date set next take to right now
-                    if (dateLastTaken == null || ( dateCurrent.compareTo(currentScript.getScriptLastTakenDate().
-                            plusHours(instructions.getTimingAmount())) >= 0) ) {
+            //while next take falls within the next hoursToFigure hours
+            Boolean done = false;
+            int failOutLoopCount = 0;
 
-                        currentScript.setScriptNextTakeDate(dateCurrent);
+            while ( !done && (failOutLoopCount < 10) ) {
+                failOutLoopCount++;
+                Prescription scriptToAdd = new Prescription(currentScript);
+                dateToTake = scriptToAdd.calcScriptNextTakeDate();
+                scriptToAdd.setScriptNextTakeDate(dateToTake);
+                currentScript.setScriptNextTakeDate(dateToTake);
 
-                    }
-                    // If not then set to lastTaken Plus 4 hours
+                Log.d(TAG, "while loop init dateToTake: " + dateToTake + " scriptToAdd-DateToTake: " + scriptToAdd.getScriptNextTakeDate() );
 
-                    else {
+                //if within the next hoursToFigure
+                if (dateToTake.isBefore(dateLimit)) {
+                    Log.d(TAG, "Current plus hours to figure: " + dateLimit);
+                    Log.d(TAG, "Adding " + scriptToAdd.getScriptName() + "to ListTBT at " + dateToTake);
 
-                        currentScript.setScriptNextTakeDate(currentScript.getScriptLastTakenDate().plusHours(instructions.getTimingAmount()));
+                    scriptListToTake.add(scriptToAdd);
+                } else { //if not then flag as done
+                    Log.d(TAG, "Done adding to scriptListToTake");
+                    done = true;
+                }
+            }//end while
 
-                    }
+        }//end for loop
 
-                    hoursRemaining -= instructions.getTimingAmount();
+        //sort listToTake (will use selection sort)
+        for (int i = 0; i < (scriptListToTake.size() - 1); i++) {
+            int lowestIndex = i;
+            for (int j = i + 1; j < scriptListToTake.size(); j++) {
+                //if date in index j comes before the date at index i set lowest index to j
+                if ( scriptListToTake.get(j).getScriptNextTakeDate().isBefore(scriptListToTake.get(lowestIndex).getScriptNextTakeDate())){
+                    lowestIndex = j;
+                }//end if
+            }//end inner for loop
+            //swap
+            Prescription temp = new Prescription(scriptListToTake.get(i));
+            scriptListToTake.set(i, new Prescription(scriptListToTake.get(lowestIndex)));
+            scriptListToTake.set(lowestIndex, new Prescription(temp));
+        }//end outer for loop
 
-                    hourlyQueue.add(currentScript);
-                    listToTake.add(currentScript);
-                } //end while
-            } //end if
-
-            //if timesper day
-            else if (instructions.getTimingInterval() == 2) {
-
-            }
-            //if everyXdays
-
-            else if (instructions.getTimingInterval() == 3) {
-
-            }else {
-                //to implement later
-            }
-
-
-
-
-            if (dateLastTaken == null){ //new never taken before
-
-            } else {
-
-            }
-        }//end for
-
-        Prescription[] arrayToTake = new Prescription[listToTake.size()];
-        for (int x = 0; x < arrayToTake.length; x++){
-            arrayToTake[x] = listToTake.get(x);
-        }
-        Arrays.sort(arrayToTake);
-        for (int x = 0; x < arrayToTake.length; x++){
-            listToTake.set(x, arrayToTake[x]);
-        }
-
-        return listToTake;
-
-    }//endbuildScriptTakeList
+    }//end buildScriptTakeList
 
 }//end PrescriptionsActivity Class

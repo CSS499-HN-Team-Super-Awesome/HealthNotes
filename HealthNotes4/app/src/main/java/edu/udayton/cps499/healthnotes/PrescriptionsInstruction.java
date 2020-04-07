@@ -2,6 +2,8 @@ package edu.udayton.cps499.healthnotes;
 
 import android.widget.Switch;
 
+import java.util.Arrays;
+
 public class PrescriptionsInstruction {
     //VARS
     //Constants
@@ -61,33 +63,34 @@ public class PrescriptionsInstruction {
      */
 
     //1. Type
-    private int type; //set to one of the values for types listed above
+    private int type = -1; //set to one of the values for types listed above
 
     //2. Amount
-    private int amountQty; //number or amount of type listed (ie 1 for one pill, 15 for 15ml
-    private String amountUnit; //unit for amount (ie, 'pill(s)', 'fl oz', 'ml', or for cream set to what would follow "Apply to ")
+    private int amountQty = -1; //number or amount of type listed (ie 1 for one pill, 15 for 15ml
+    private String amountUnit = " "; //unit for amount (ie, 'pill(s)', 'fl oz', 'ml', or for cream set to what would follow "Apply to ")
     private boolean amountIsPrepared = true; //true if in an injectable pen model like EpiPen or Emgality
     private boolean asDirected = false; //flags if the medicine is to be taken as directed
         // This for items like Insulin which can be directed to take different amounts depending on glucose levels
-    private String amountOtherDirection; //user defined for type Other
+    private String amountOtherDirection= " "; //user defined for type Other
 
     //3. Interval
-    private int timingInterval; //set to one of the possible constant variables for timing.
-    private int timingAmount; //value of X for the interval noted above or -1 if as directed.
+    private int timingInterval = -1; //set to one of the possible constant variables for timing.
+    private int timingAmount = -1; //value o = -1 X for the interval noted above or -1 if as directed.
+    private int[] timingTimeOfDays; //Used to track selected times of days for the
 
     //4. Duration
-    private boolean durationLimited; //set to true if for x# of days, false for all others
-    private int durationInDays; //set by user to a number of days the medicine will be used.
+    private boolean durationLimited = false; //set to true if for x# of days, false for all others
+    private int durationInDays = -1; //set by user to a number of days the medicine will be used.
 
     //5. As Needed
-    private boolean isAsNeeded; //false if only meant to be taken as needed for user defined x.
-    private String asNeededFor; //user defined string for as needed for (ie pain, nausea)
+    private boolean isAsNeeded = false; //false if only meant to be taken as needed for user defined x.
+    private String asNeededFor = " "; //user defined string for as needed for (ie pain, nausea)
 
     //6. Reminders
-    private int reminderSetting; //set to value to correspond with constants above
+    private int reminderSetting = -1; //set to value to correspond with constants above
 
     //7. Notes
-    private String notes; //user defined notes set to limited length of no more than x characters
+    private String notes = " "; //user defined notes set to limited length of no more than x characters
 
 
     //constructors
@@ -129,6 +132,26 @@ public class PrescriptionsInstruction {
         this.isAsNeeded = isAsNeeded;
         this.asNeededFor = asNeededFor;
         this.notes = notes;
+    }//end General Pill Constructor
+
+    //constructor general pill
+    public PrescriptionsInstruction(int type, int amountQty, String amountUnit, boolean asDirected, String amountOtherDirection,
+                                    int timingInterval, int timingAmount, boolean durationLimited, int durationInDays,
+                                    boolean isAsNeeded, String asNeededFor, String notes, int[] timingTimeOfDays) {
+        this.type = type;
+        this.amountQty = amountQty;
+        this.amountUnit = amountUnit;
+        this.asDirected = asDirected;
+        this.amountOtherDirection = amountOtherDirection;
+        this.timingInterval = timingInterval;
+        this.timingAmount = timingAmount;
+        this.durationLimited = durationLimited;
+        this.durationInDays = durationInDays;
+        this.isAsNeeded = isAsNeeded;
+        this.asNeededFor = asNeededFor;
+        this.notes = notes;
+
+        this.timingTimeOfDays = Arrays.copyOf(timingTimeOfDays, timingTimeOfDays.length);
     }//end General Pill Constructor
 
 
@@ -247,6 +270,20 @@ public class PrescriptionsInstruction {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public int[] getTimingTimeOfDays() {
+        return timingTimeOfDays;
+    }
+
+    public void setTimingTimeOfDays(int[] timingTimeOfDays) {
+        this.timingTimeOfDays = Arrays.copyOf(timingTimeOfDays, timingTimeOfDays.length);
+    }
+    public void setTimingTimeOfDays(String timingTimeOfDays) {
+        for (int x = 0; x < this.timingTimeOfDays.length; x++) {
+            if (timingTimeOfDays.charAt(x) != 'x') this.timingTimeOfDays[x] = 0;
+            else this.timingTimeOfDays[x] = 1;
+        }
     }
 
 

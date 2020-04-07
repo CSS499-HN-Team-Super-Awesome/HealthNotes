@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        android:background="@color/hnGreyLight"
+        android:background="@color/hnGreenDark"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="@+id/notesButton"
@@ -33,7 +33,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="5dp"
         android:text="Due:"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
         android:layout_marginTop="5dp"
         android:layout_toEndOf="@+id/takeAtLabelTextView"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/takeAtLabelTextView"
         app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +60,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/takeAtDateTextView" />
@@ -121,7 +121,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="0dp"
         android:text="@string/app_default_txt"
-        android:textColor="@color/hnBlack"
+        android:textColor="@color/hnWhite"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />

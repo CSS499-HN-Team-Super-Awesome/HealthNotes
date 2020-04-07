@@ -26,14 +26,18 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <!--
     <Button
         android:id="@+id/homeButton"
         android:layout_width="75dp"
         android:layout_height="50dp"
+        android:layout_marginStart="320dp"
         android:text="Home"
         app:layout_constraintBottom_toBottomOf="@+id/prescriptionsTopToolbar"
         app:layout_constraintStart_toStartOf="@+id/prescriptionsTopToolbar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+    -->
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/prescriptionsBottomToolbar"
@@ -104,6 +108,17 @@
         app:layout_goneMarginEnd="0dp"
         app:layout_goneMarginStart="0dp"
         app:layout_goneMarginTop="0dp" />
+
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_home_white_48dp"
+        android:contentDescription="@string/btn_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home_white_48dp"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
