@@ -1,15 +1,16 @@
+/*
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+ */
 package edu.udayton.cps499.healthnotes;
 
 import android.os.Build;
 import android.util.Log;
-import android.widget.Switch;
 
 import androidx.annotation.RequiresApi;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
 public class Prescription {
@@ -35,6 +36,8 @@ public class Prescription {
     private final int MIDAFTERNOON = 4; //3pm to 6pm
     private final int EVENING = 5; //6pm to 9pm
     private final int NIGHT = 6; //9pm to 5am
+    //
+    private final int MINUTESTOPAD = 30; //used to flag items not overdue if still within x minutes of take time
 
     //instance Vars
     private int id;
@@ -516,19 +519,34 @@ public class Prescription {
         int hour = date.getHour();
 
         if ( hour > 5 && hour <= 9 ) {
-            return 1;
+            return MORNING;
         } else if ( hour > 9 && hour <= 12 ) {
-            return 2;
+            return MIDMORNING;
         } else if ( hour > 12 && hour <= 15 ) {
-            return 3;
+            return AFTERNOON;
         } else if ( hour > 15 && hour <= 18 ) {
-            return 4;
+            return MIDAFTERNOON;
         } else if ( hour > 18 && hour <= 21 ) {
-            return 5;
+            return EVENING;
         } else {
-            return 6;
+            return NIGHT;
         }
     }//end currentTimeOfDay
+
+
+    public Boolean isOverdue() {
+        if (getScriptNextTakeDate().isBefore(LocalDateTime.now().minusMinutes(MINUTESTOPAD)))  //if before X minutes ago
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean isDue() {
+        if ( getScriptNextTakeDate().isBefore(LocalDateTime.now().plusMinutes(MINUTESTOPAD)) )
+            return true;
+        else
+            return false;
+    }
 
 
     public void take() {

@@ -1,22 +1,21 @@
+/*
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+ */
 package edu.udayton.cps499.healthnotes;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
-
-import android.Manifest;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -122,7 +121,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         RecyclerView recyclerView = findViewById(R.id.prescriptionsListRecyclerView);
-        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, providerList, scriptListToTake);
+        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, scriptList, scriptListToTake);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(mLayoutManager);
     }

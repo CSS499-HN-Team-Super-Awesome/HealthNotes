@@ -1,3 +1,10 @@
+/*
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+
+ */
+
 package edu.udayton.cps499.healthnotes;
 
 import androidx.annotation.NonNull;

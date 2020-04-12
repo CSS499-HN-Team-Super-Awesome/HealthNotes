@@ -1,3 +1,10 @@
+/*
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+
+ */
+
 package edu.udayton.cps499.healthnotes;
 
 import android.content.Context;
@@ -6,7 +13,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,13 +63,13 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
         View view;
         if ( viewType == 1 ) { //due now = green
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_green, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_green_style2, parent, false);
         }
         else if ( viewType == 2 ){ //overdue = red
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_red, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_red_style2, parent, false);
         }
         else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default_style2, parent, false);
         }
 
 
@@ -75,10 +81,10 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int getItemViewType(int position) {
-        if (scriptListToTake.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().minusMinutes(MINUTESTOPAD))) { //if before X minutes ago
+        if (scriptListToTake.get(position).isOverdue()) { //if before X minutes ago
             return OVERDUE;
         }
-        else if (scriptListToTake.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().plusMinutes(MINUTESTOPAD))) {
+        else if (scriptListToTake.get(position).isDue()) {
             return DUENOW;
         }
         else {
@@ -142,9 +148,9 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         TextView takeNextTextView;
         TextView nameTextView;
         TextView instructionsTextView;
-        Button takeBtn;
-        Button notesBtn;
-        Button infoBtn;
+//        Button takeBtn;
+//        Button notesBtn;
+//        Button infoBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -152,9 +158,9 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
             takeNextTextView = itemView.findViewById(R.id.takeAtLabelTextView);
             nameTextView = itemView.findViewById(R.id.nameTextView);
             instructionsTextView = itemView.findViewById(R.id.instructionsTextView);
-            takeBtn = itemView.findViewById(R.id.takeButton);
-            notesBtn = itemView.findViewById(R.id.notesButton);
-            infoBtn = itemView.findViewById(R.id.infoButton);
+//            takeBtn = itemView.findViewById(R.id.takeButton);
+//            notesBtn = itemView.findViewById(R.id.notesButton);
+//            infoBtn = itemView.findViewById(R.id.infoButton);
 
         }//end ViewHolder
     }//end ViewHolder Method

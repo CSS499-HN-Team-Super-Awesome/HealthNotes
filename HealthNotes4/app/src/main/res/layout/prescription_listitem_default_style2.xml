@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/script_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="3dp"
+    app:layout_constraintBottom_toBottomOf="@+id/instructionsTextView">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/instructionsTextView"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="-4dp"
+        android:background="@color/hnGreyLight"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="@+id/instructionsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/takeAtLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="Due:"
+        android:textColor="@color/hnBlack"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/takeAtDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="3dp"
+        android:layout_toEndOf="@+id/takeAtLabelTextView"
+        android:text="@string/app_default_txt"
+        android:textColor="@color/hnBlack"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/takeAtLabelTextView"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/takeAtDateTextView"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="4dp"
+        android:layout_toEndOf="@+id/imageView"
+        android:text="@string/app_default_txt"
+        android:textColor="@color/hnBlack"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/takeAtDateTextView" />
+
+    <TextView
+        android:id="@+id/instructionsTextView"
+        android:layout_width="399dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameTextView"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/app_default_txt"
+        android:textColor="@color/hnBlack"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="88dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="3dp"
+        app:srcCompat="@android:drawable/ic_menu_report_image" />
+
+</RelativeLayout>
