@@ -16,7 +16,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
-        android:background="@color/hnRed"
+        android:background="@color/hnRedDark"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintBottom_toBottomOf="@+id/notesButton"
@@ -70,7 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructionsTextView"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/notesButton"
         android:background="@color/hnGreyDark"
@@ -86,9 +86,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructionsTextView"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="7dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/cameraButton"
         android:background="@color/hnGreyDark"
         android:text="@string/btn_take"
         android:textColor="@color/hnWhite"
@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructionsTextView"
-        android:layout_marginStart="22dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/takeButton"
         android:background="@color/hnGreyDark"
@@ -126,17 +126,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="57dp"
-        android:layout_height="57dp"
+    <ImageButton
+        android:id="@+id/cameraButton"
+        android:layout_width="87dp"
+        android:layout_height="54dp"
         android:layout_below="@+id/instructionsTextView"
-        android:layout_alignStart="@+id/instructionsTextView"
-        android:layout_marginStart="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="4dp"
-        android:contentDescription="@string/contentDesc_medImage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView"
-        app:srcCompat="@android:drawable/ic_menu_report_image" />
+        app:srcCompat="@drawable/ic_add_a_photo_white_48dp" />
 
 </RelativeLayout>

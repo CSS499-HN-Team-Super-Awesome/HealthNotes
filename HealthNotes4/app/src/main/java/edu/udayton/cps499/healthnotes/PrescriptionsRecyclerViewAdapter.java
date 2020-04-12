@@ -33,9 +33,9 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
     private final int MINUTESTOPAD = 30; //used to flag items not overdue if still within x minutes of take time
 
-    private ArrayList<Provider> providers = new ArrayList<Provider>();
-    private ArrayList<Prescription> scripts = new ArrayList<Prescription>();
-    private ArrayList<Prescription> scriptsTakeList = new ArrayList<Prescription>();
+    private ArrayList<Prescription> scriptList = new ArrayList<>();
+    private ArrayList<Prescription> scriptListToTake = new ArrayList<>();
+    private ArrayList<Prescription> scriptsTakeList = new ArrayList<>();
     private Context mContext;
 
     private SimpleDateFormat sdfYMDhms = new SimpleDateFormat("yyyy MMM dd HH:mm:ss");
@@ -43,9 +43,9 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     private SimpleDateFormat sdf12HourTime = new SimpleDateFormat("hh:mm aa");
 
 
-    public PrescriptionsRecyclerViewAdapter(Context mContext, ArrayList<Provider> providerList, ArrayList<Prescription> listToTake) {
-        this.providers = providerList;
-        this.scripts = listToTake;
+    public PrescriptionsRecyclerViewAdapter(Context mContext, ArrayList<Prescription> scriptList, ArrayList<Prescription> listToTake) {
+        this.scriptList = scriptList;
+        this.scriptListToTake = listToTake;
         this.mContext = mContext;
     }
 
@@ -75,10 +75,10 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int getItemViewType(int position) {
-        if (scripts.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().minusMinutes(MINUTESTOPAD))) { //if before X minutes ago
+        if (scriptListToTake.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().minusMinutes(MINUTESTOPAD))) { //if before X minutes ago
             return OVERDUE;
         }
-        else if (scripts.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().plusMinutes(MINUTESTOPAD))) {
+        else if (scriptListToTake.get(position).getScriptNextTakeDate().isBefore(LocalDateTime.now().plusMinutes(MINUTESTOPAD))) {
             return DUENOW;
         }
         else {
@@ -98,7 +98,7 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         TextView instructions = holder.itemView.findViewById(R.id.instructionsTextView);
 
         //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        LocalDateTime dateTime = scripts.get(position).getScriptNextTakeDate();
+        LocalDateTime dateTime = scriptListToTake.get(position).getScriptNextTakeDate();
 
         DateTimeFormatter formmat1 = DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
         DateTimeFormatter formmat2 = DateTimeFormatter.ofPattern("MMM dd hh:mm a", Locale.ENGLISH);
@@ -124,17 +124,18 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         }
 
         dateTextView.setText(displayScriptDue);
-        nameTextView.setText(scripts.get(position).getScriptName());
-        instructions.setText(scripts.get(position).getScriptInstruction().toString());
+        nameTextView.setText(scriptListToTake.get(position).getScriptName());
+        instructions.setText(scriptListToTake.get(position).getScriptInstruction().toString());
 
         //buttons
+
 
 
     }
 
     @Override
     public int getItemCount() {
-        return scripts.size();
+        return scriptListToTake.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
