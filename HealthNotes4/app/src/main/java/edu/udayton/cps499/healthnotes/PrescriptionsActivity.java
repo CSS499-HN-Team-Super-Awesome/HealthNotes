@@ -5,25 +5,31 @@
  */
 package edu.udayton.cps499.healthnotes;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import org.w3c.dom.Text;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
-public class PrescriptionsActivity extends AppCompatActivity {
+public class PrescriptionsActivity extends AppCompatActivity implements PrescriptionsRecyclerViewAdapter.OnNoteListener {
     //VARS
     private static final String TAG = "PrescActivity";
+    Dialog myDialog;
 
     //create example data
     //load lists with default test data
@@ -37,6 +43,10 @@ public class PrescriptionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prescriptions);
+
+        //Set Dialog for the take popup
+        myDialog = new Dialog(this);
+
 
         ImageButton homeBtn = findViewById(R.id.homeButton);
         homeBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,6 +67,69 @@ public class PrescriptionsActivity extends AppCompatActivity {
         initRecyclerView(); //initialize the recyclerview
 
     } //end onCreate
+
+    /*
+        Method kicks the popup when a medication is selected from the take list in the Recycler view.
+        Method will fire the prescription fragment
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void showPopUp(View view, int position) {
+        myDialog.setContentView(R.layout.fragment_prescription);
+        TextView dueFieldTextView = (TextView) myDialog.findViewById(R.id.dueFieldTextView);
+        TextView nameTextView = (TextView) myDialog.findViewById(R.id.nameTextView);
+        TextView strengthTextView = (TextView) myDialog.findViewById(R.id.strengthFieldTextView);
+        TextView instructionsTextView = (TextView) myDialog.findViewById(R.id.instructionsTextView);
+        Button takeBtn = myDialog.findViewById(R.id.takeButton);
+        Button skipBtn = myDialog.findViewById(R.id.skipButton);
+        Button notesBtn = myDialog.findViewById(R.id.notesButton);
+        Button cancelBtn = myDialog.findViewById(R.id.cancelButton);
+        Prescription script = new Prescription(scriptListToTake.get(position));
+
+        //disable notes button as it is not implemented yet
+        notesBtn.setEnabled(false);
+
+        //Disable take and skip buttons if medicine is not due or overdue
+        if ( !script.isDue() && !script.isOverdue() ) {
+            takeBtn.setEnabled(false);
+            skipBtn.setEnabled(false);
+        }//end if
+
+        //teke button action
+        takeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });//end take OnClickListener
+
+        //skip button action
+        skipBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });//end skip OnClickListener
+
+        //info button action
+        notesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });//end info OnClickListener
+
+        //cancel button action
+        cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.dismiss();
+            }
+        });//end cancel OnClickListener
+
+        myDialog.show();
+
+    }//end Popup method
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initArrayList() {
@@ -121,7 +194,7 @@ public class PrescriptionsActivity extends AppCompatActivity {
         RecyclerView.LayoutManager mLayoutManager = new
                 StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         RecyclerView recyclerView = findViewById(R.id.prescriptionsListRecyclerView);
-        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, scriptList, scriptListToTake);
+        PrescriptionsRecyclerViewAdapter adapter = new PrescriptionsRecyclerViewAdapter(this, scriptList, scriptListToTake, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(mLayoutManager);
     }
@@ -184,4 +257,12 @@ public class PrescriptionsActivity extends AppCompatActivity {
 
     }//end buildScriptTakeList
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    @Override
+    public void onNoteClick(int position) {
+        Log.d(TAG, "Prescription element position: " + position + " was clicked");
+        View view = null;
+        //launch fragment for individual script to take instance
+        showPopUp(view, position);
+    }
 }//end PrescriptionsActivity Class

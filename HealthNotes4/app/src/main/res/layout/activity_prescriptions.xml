@@ -47,7 +47,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/prescriptionsBottomToolbar"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
@@ -55,43 +55,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
-
-        <Button
-            android:id="@+id/listButton"
-            android:layout_width="100dp"
-            android:layout_height="62dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginBottom="8dp"
-            android:text="List"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/prescriptionsBottomToolbar"
-            app:layout_constraintTop_toTopOf="@+id/prescriptionsBottomToolbar"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/editButton"
-            android:layout_width="100dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Edit"
-            android:gravity="center"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/addButton"
-            android:layout_width="100dp"
-            android:layout_height="62dp"
-            android:layout_marginStart="25dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Add"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/editButton"
-            app:layout_constraintTop_toTopOf="@+id/prescriptionsBottomToolbar"
-            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -107,7 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/InstructionsToolbar"
         app:layout_constraintVertical_bias="0.0"
         app:layout_goneMarginBottom="0dp"
         app:layout_goneMarginEnd="0dp"
@@ -124,6 +87,67 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_home_white_48dp"
         tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+    <Button
+        android:id="@+id/listButton"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="List"
+        app:layout_constraintBottom_toBottomOf="@id/prescriptionsBottomToolbar"
+        app:layout_constraintStart_toStartOf="@id/prescriptionsBottomToolbar" />
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="3dp"
+        android:gravity="center"
+        android:text="Edit"
+        app:layout_constraintBottom_toBottomOf="@+id/prescriptionsBottomToolbar"
+        app:layout_constraintEnd_toEndOf="@id/prescriptionsBottomToolbar"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@id/prescriptionsBottomToolbar" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="100dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="3dp"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="@id/prescriptionsBottomToolbar"
+        app:layout_constraintEnd_toEndOf="@+id/prescriptionsBottomToolbar" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/InstructionsToolbar"
+        android:layout_width="409dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="1dp"
+        android:background="@drawable/gradient_hnbluelight_to_dark"
+        android:minHeight="?attr/actionBarSize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prescriptionsTopToolbar">
+
+        <TextView
+            android:id="@+id/instructionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/script_activity_instructions"
+            android:textColor="@color/hnWhite"
+            app:autoSizeTextType="none"
+            app:drawableTintMode="src_over"
+            app:textAllCaps="true"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="5dp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

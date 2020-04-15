@@ -48,11 +48,15 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     private SimpleDateFormat sdfMD12Hour = new SimpleDateFormat("MMM dd hh:mm aa");
     private SimpleDateFormat sdf12HourTime = new SimpleDateFormat("hh:mm aa");
 
+    private OnNoteListener mOnNoteListener;
 
-    public PrescriptionsRecyclerViewAdapter(Context mContext, ArrayList<Prescription> scriptList, ArrayList<Prescription> listToTake) {
+
+    public PrescriptionsRecyclerViewAdapter(Context mContext, ArrayList<Prescription> scriptList,
+                                            ArrayList<Prescription> listToTake, OnNoteListener onNoteListener) {
         this.scriptList = scriptList;
         this.scriptListToTake = listToTake;
         this.mContext = mContext;
+        this.mOnNoteListener = onNoteListener;
     }
 
 
@@ -74,7 +78,7 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
 
 //        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        ViewHolder holder = new ViewHolder(view, mOnNoteListener);
         return holder;
     }
 
@@ -144,7 +148,8 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         return scriptListToTake.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        OnNoteListener onNoteListener;
         TextView takeNextTextView;
         TextView nameTextView;
         TextView instructionsTextView;
@@ -152,7 +157,7 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 //        Button notesBtn;
 //        Button infoBtn;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
             assert takeNextTextView != null;
             takeNextTextView = itemView.findViewById(R.id.takeAtLabelTextView);
@@ -162,8 +167,17 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 //            notesBtn = itemView.findViewById(R.id.notesButton);
 //            infoBtn = itemView.findViewById(R.id.infoButton);
 
+            this.onNoteListener = onNoteListener;
+            itemView.setOnClickListener(this);
         }//end ViewHolder
+
+        @Override
+        public void onClick(View v) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
     }//end ViewHolder Method
 
-
+    public interface OnNoteListener {
+        void onNoteClick(int position);
+    }
 }//end Adapter class

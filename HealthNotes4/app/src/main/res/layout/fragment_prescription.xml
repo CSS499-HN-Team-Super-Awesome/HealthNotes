@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@color/hnBlue"
+
+    app:layout_goneMarginBottom="20dp"
+    tools:context=".PrescriptionFragment">
+
+
+    <ImageView
+        android:id="@+id/scriptImageView"
+        android:layout_width="80dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:src="@android:drawable/ic_menu_report_image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/dueCatagoryToolBar"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/scriptImageView"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/dueCategoryTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Category Default"
+            android:textColor="@color/hnWhite"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            app:textAllCaps="true"
+            tools:layout_editor_absoluteX="249dp"
+            tools:layout_editor_absoluteY="123dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/dueTxtTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Due:"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/scriptImageView"
+        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar" />
+
+    <TextView
+        android:id="@+id/dueFieldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="DueDefault"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/dueTxtTextView"
+        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Name Default"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dueFieldTextView" />
+
+    <TextView
+        android:id="@+id/strengthTxtTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Strength:"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+    <TextView
+        android:id="@+id/strengthFieldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Str Default"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/strengthTxtTextView"
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+
+    <TextView
+        android:id="@+id/instructionsTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="Instruction Default"
+        android:textColor="@color/hnWhite"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strengthFieldTextView" />
+
+    <Button
+        android:id="@+id/takeButton"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Take"
+        android:textSize="18sp"
+        android:textColor="@color/hnWhite"
+        android:textStyle="bold"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
+
+    <Button
+        android:id="@+id/skipButton"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Skip"
+        android:textSize="18sp"
+        android:textColor="@color/hnWhite"
+        android:textStyle="bold"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/takeButton"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
+
+    <Button
+        android:id="@+id/notesButton"
+        android:layout_width="70dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:text="Notes"
+        android:textSize="18sp"
+        android:textColor="@color/hnWhite"
+        android:textStyle="bold"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        app:layout_constraintStart_toEndOf="@+id/skipButton"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="75dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        android:text="Cancel"
+        android:textColor="@color/hnWhite"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/notesButton"
+        app:layout_constraintTop_toBottomOf="@+id/instructionsTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

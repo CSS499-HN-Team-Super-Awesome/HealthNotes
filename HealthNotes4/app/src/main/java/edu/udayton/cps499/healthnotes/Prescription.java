@@ -37,7 +37,7 @@ public class Prescription {
     private final int EVENING = 5; //6pm to 9pm
     private final int NIGHT = 6; //9pm to 5am
     //
-    private final int MINUTESTOPAD = 30; //used to flag items not overdue if still within x minutes of take time
+    private final int MINUTESTOPAD = 60; //used to flag items not overdue if still within x minutes of take time
 
     //instance Vars
     private int id;

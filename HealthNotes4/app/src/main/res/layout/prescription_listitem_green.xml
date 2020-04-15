@@ -71,7 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/takeAtDateTextView" />
 
     <Button
-        android:id="@+id/infoButton"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/instructionsTextView"
