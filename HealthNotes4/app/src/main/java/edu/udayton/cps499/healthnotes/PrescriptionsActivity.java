@@ -26,7 +26,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 
-public class PrescriptionsActivity extends AppCompatActivity implements PrescriptionsRecyclerViewAdapter.OnNoteListener {
+public class PrescriptionsActivity extends AppCompatActivity implements
+        PrescriptionsRecyclerViewAdapter.OnNoteListener, View.OnClickListener {
+
     //VARS
     private static final String TAG = "PrescActivity";
     Dialog myDialog;
@@ -72,63 +74,68 @@ public class PrescriptionsActivity extends AppCompatActivity implements Prescrip
         Method kicks the popup when a medication is selected from the take list in the Recycler view.
         Method will fire the prescription fragment
      */
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void showPopUp(View view, int position) {
-        myDialog.setContentView(R.layout.fragment_prescription);
-        TextView dueFieldTextView = (TextView) myDialog.findViewById(R.id.dueFieldTextView);
-        TextView nameTextView = (TextView) myDialog.findViewById(R.id.nameTextView);
-        TextView strengthTextView = (TextView) myDialog.findViewById(R.id.strengthFieldTextView);
-        TextView instructionsTextView = (TextView) myDialog.findViewById(R.id.instructionsTextView);
-        Button takeBtn = myDialog.findViewById(R.id.takeButton);
-        Button skipBtn = myDialog.findViewById(R.id.skipButton);
-        Button notesBtn = myDialog.findViewById(R.id.notesButton);
-        Button cancelBtn = myDialog.findViewById(R.id.cancelButton);
-        Prescription script = new Prescription(scriptListToTake.get(position));
-
-        //disable notes button as it is not implemented yet
-        notesBtn.setEnabled(false);
-
-        //Disable take and skip buttons if medicine is not due or overdue
-        if ( !script.isDue() && !script.isOverdue() ) {
-            takeBtn.setEnabled(false);
-            skipBtn.setEnabled(false);
-        }//end if
-
-        //teke button action
-        takeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });//end take OnClickListener
-
-        //skip button action
-        skipBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });//end skip OnClickListener
-
-        //info button action
-        notesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });//end info OnClickListener
-
-        //cancel button action
-        cancelBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                myDialog.dismiss();
-            }
-        });//end cancel OnClickListener
-
-        myDialog.show();
-
-    }//end Popup method
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public void showPopUp(View view, final int position) {
+//        myDialog.setContentView(R.layout.fragment_prescription);
+//        TextView dueFieldTextView = (TextView) myDialog.findViewById(R.id.dueFieldTextView);
+//        TextView nameTextView = (TextView) myDialog.findViewById(R.id.nameTextView);
+//        TextView strengthTextView = (TextView) myDialog.findViewById(R.id.strengthFieldTextView);
+//        TextView instructionsTextView = (TextView) myDialog.findViewById(R.id.instructionsTextView);
+//        Button takeBtn = myDialog.findViewById(R.id.takeButton);
+//        Button skipBtn = myDialog.findViewById(R.id.skipButton);
+//        Button notesBtn = myDialog.findViewById(R.id.notesButton);
+//        Button cancelBtn = myDialog.findViewById(R.id.cancelButton);
+//        Prescription script = new Prescription(scriptListToTake.get(position));
+//
+//        //disable notes button as it is not implemented yet
+//        notesBtn.setEnabled(false);
+//
+//        //Disable take and skip buttons if medicine is not due or overdue
+//        if ( !script.isDue() && !script.isOverdue() ) {
+//            takeBtn.setEnabled(false);
+//            skipBtn.setEnabled(false);
+//        }//end if
+//
+//        //teke button action
+//        takeBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                int takeIndex = position;
+//                Intent takeIntent = new Intent(PrescriptionsActivity.this, PrescriptionTake.class);
+//                takeIntent.putExtra("scriptList", scriptList);
+//                takeIntent.putExtra("scriptListToTake", scriptListToTake);
+//                takeIntent.putExtra( "takeIndex", takeIndex);
+//                startActivity(takeIntent);
+//            }
+//        });//end take OnClickListener
+//
+//        //skip button action
+//        skipBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });//end skip OnClickListener
+//
+//        //info button action
+//        notesBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });//end info OnClickListener
+//
+//        //cancel button action
+//        cancelBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                myDialog.dismiss();
+//            }
+//        });//end cancel OnClickListener
+//
+//        myDialog.show();
+//
+//    }//end Popup method
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -223,6 +230,8 @@ public class PrescriptionsActivity extends AppCompatActivity implements Prescrip
                 dateToTake = scriptToAdd.calcScriptNextTakeDate();
                 scriptToAdd.setScriptNextTakeDate(dateToTake);
                 currentScript.setScriptNextTakeDate(dateToTake);
+                currentScript.setId( x );//set id as key value to the index of the medicine from source list of prescribed medicines
+
 
                 Log.d(TAG, "while loop init dateToTake: " + dateToTake + " scriptToAdd-DateToTake: " + scriptToAdd.getScriptNextTakeDate() );
 
@@ -257,12 +266,21 @@ public class PrescriptionsActivity extends AppCompatActivity implements Prescrip
 
     }//end buildScriptTakeList
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onNoteClick(int position) {
         Log.d(TAG, "Prescription element position: " + position + " was clicked");
-        View view = null;
+//        View view = null;
         //launch fragment for individual script to take instance
-        showPopUp(view, position);
+//        showPopUp(view, position);
+        Intent takeIntent = new Intent(PrescriptionsActivity.this, PrescriptionTake.class);
+        takeIntent.putExtra("scriptList", scriptList);
+        takeIntent.putExtra("scriptListToTake", scriptListToTake);
+        takeIntent.putExtra( "takeIndex", position);
+        startActivity(takeIntent);
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }//end PrescriptionsActivity Class

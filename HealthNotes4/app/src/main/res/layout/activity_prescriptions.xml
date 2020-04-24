@@ -44,6 +44,17 @@
         app:layout_constraintVertical_bias="1.0" />
     -->
 
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_home_white_48dp"
+        android:contentDescription="@string/btn_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home_white_48dp"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/prescriptionsBottomToolbar"
         android:layout_width="0dp"
@@ -76,17 +87,6 @@
         app:layout_goneMarginEnd="0dp"
         app:layout_goneMarginStart="0dp"
         app:layout_goneMarginTop="0dp" />
-
-    <ImageButton
-        android:id="@+id/homeButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:background="@drawable/ic_home_white_48dp"
-        android:contentDescription="@string/btn_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home_white_48dp"
-        tools:ignore="MissingConstraints,VectorDrawableCompat" />
 
     <Button
         android:id="@+id/listButton"

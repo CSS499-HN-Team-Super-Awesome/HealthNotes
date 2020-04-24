@@ -62,7 +62,7 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Log.d(TAG, "viewType: " + viewType);
 
         View view;
@@ -137,11 +137,8 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         nameTextView.setText(scriptListToTake.get(position).getScriptName());
         instructions.setText(scriptListToTake.get(position).getScriptInstruction().toString());
 
-        //buttons
-
-
-
     }
+
 
     @Override
     public int getItemCount() {
@@ -153,31 +150,24 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         TextView takeNextTextView;
         TextView nameTextView;
         TextView instructionsTextView;
-//        Button takeBtn;
-//        Button notesBtn;
-//        Button infoBtn;
 
         public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
-            assert takeNextTextView != null;
-            takeNextTextView = itemView.findViewById(R.id.takeAtLabelTextView);
-            nameTextView = itemView.findViewById(R.id.nameTextView);
-            instructionsTextView = itemView.findViewById(R.id.instructionsTextView);
-//            takeBtn = itemView.findViewById(R.id.takeButton);
-//            notesBtn = itemView.findViewById(R.id.notesButton);
-//            infoBtn = itemView.findViewById(R.id.infoButton);
 
-            this.onNoteListener = onNoteListener;
+            mOnNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
         }//end ViewHolder
 
         @Override
         public void onClick(View v) {
+
+            Log.d(TAG, "onClick: " + getAdapterPosition());
             onNoteListener.onNoteClick(getAdapterPosition());
         }
     }//end ViewHolder Method
 
     public interface OnNoteListener {
+
         void onNoteClick(int position);
     }
 }//end Adapter class

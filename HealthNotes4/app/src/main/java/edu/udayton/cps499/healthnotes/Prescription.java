@@ -10,10 +10,11 @@ import android.util.Log;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class Prescription {
+public class Prescription implements Serializable {
     //vars
     private static final String TAG = "Prescription Object";
 
