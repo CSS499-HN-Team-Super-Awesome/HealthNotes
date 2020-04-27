@@ -25,7 +25,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<PrescriptionsRecyclerViewAdapter.ViewHolder> {
     //declare interface
 
 
@@ -67,19 +67,17 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
         View view;
         if ( viewType == 1 ) { //due now = green
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_green_style2, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_green_style3, parent, false);
         }
         else if ( viewType == 2 ){ //overdue = red
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_red_style2, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_red_style3, parent, false);
         }
         else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default_style2, parent, false);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default_style3, parent, false);
         }
 
-
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.prescription_listitem_default, parent, false);
-        ViewHolder holder = new ViewHolder(view, mOnNoteListener);
-        return holder;
+        //ViewHolder holder = new ViewHolder(view, mOnNoteListener);
+        return new ViewHolder(view, mOnNoteListener);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -99,7 +97,7 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Log.d(TAG, "onBindViewHolder");
 
         //set TextViews
@@ -146,15 +144,12 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        OnNoteListener onNoteListener;
-        TextView takeNextTextView;
-        TextView nameTextView;
-        TextView instructionsTextView;
+        OnNoteListener mOnNoteListener;
 
         public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
 
-            mOnNoteListener = onNoteListener;
+            this.mOnNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
         }//end ViewHolder
 
@@ -162,12 +157,11 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Recyc
         public void onClick(View v) {
 
             Log.d(TAG, "onClick: " + getAdapterPosition());
-            onNoteListener.onNoteClick(getAdapterPosition());
+            mOnNoteListener.onNoteClick(getAdapterPosition());
         }
     }//end ViewHolder Method
 
     public interface OnNoteListener {
-
         void onNoteClick(int position);
     }
 }//end Adapter class

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
+    android:background="@drawable/gradient_hnwhite_to_grey"
     tools:context=".PrescriptionTake">
 
 
@@ -24,7 +24,12 @@
             android:gravity="center"
             android:text="Take Prescription"
             android:textColor="@color/hnWhite"
-            android:textSize="30sp"></TextView>
+            android:textSize="30sp"
+            android:shadowColor = "#000000"
+            android:shadowDx = "2"
+            android:shadowDy = "2"
+            android:shadowRadius = "1"
+            ></TextView>
         <!--<ImageButton
         android:id="@+id/homeButton"
         android:layout_width="60dp"
@@ -45,7 +50,11 @@
         android:background="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/prescriptionsTopToolbar"
         app:layout_constraintTop_toTopOf="@+id/prescriptionsTopToolbar"
-        app:srcCompat="@drawable/ic_home_white_48dp" />
+        app:srcCompat="@drawable/ic_home_white_48dp"
+        android:shadowColor = "#000000"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1" />
 
     <ImageView
         android:id="@+id/scriptImageView"
@@ -64,9 +73,9 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="5dp"
-        android:background="?attr/colorPrimary"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
+        android:background="@drawable/gradient_hnbluelight_to_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/scriptImageView"
@@ -83,7 +92,11 @@
             android:textStyle="bold"
             app:textAllCaps="true"
             tools:layout_editor_absoluteX="249dp"
-            tools:layout_editor_absoluteY="123dp" />
+            tools:layout_editor_absoluteY="123dp"
+            android:shadowColor = "#000000"
+            android:shadowDx = "2"
+            android:shadowDy = "2"
+            android:shadowRadius = "1"/>
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -94,10 +107,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Due:"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/scriptImageView"
-        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar" />
+        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1" />
 
     <TextView
         android:id="@+id/dueFieldTextView"
@@ -106,10 +123,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="DueDefault"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/dueTxtTextView"
-        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar" />
+        app:layout_constraintTop_toBottomOf="@+id/dueCatagoryToolBar"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1" />
 
     <TextView
         android:id="@+id/nameTextView"
@@ -118,10 +139,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Name Default"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dueFieldTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/dueFieldTextView"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1"/>
 
     <TextView
         android:id="@+id/strengthTxtTextView"
@@ -130,10 +155,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Strength:"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "3" />
 
     <TextView
         android:id="@+id/strengthFieldTextView"
@@ -142,10 +171,14 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Str Default"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/strengthTxtTextView"
-        app:layout_constraintTop_toBottomOf="@+id/nameTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/nameTextView"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "3" />
 
     <TextView
         android:id="@+id/instructionsTextView"
@@ -154,31 +187,37 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Instruction Default"
-        android:textColor="@color/hnWhite"
+        android:textColor="@color/hnBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/strengthFieldTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/strengthFieldTextView"
+        android:shadowColor = "@color/hnWhite"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "3" />
 
     <Button
         android:id="@+id/takeButton"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style_20dp_rounded_corners"
         android:text="Take"
         android:textColor="@color/hnWhite"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/skipButton"
+        android:shadowColor = "#000000"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1"/>
 
     <Button
         android:id="@+id/skipButton"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_style_20dp_rounded_corners"
         android:text="Skip"
@@ -186,36 +225,45 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/takeButton"
-        app:layout_constraintVertical_bias="0.511" />
+        app:layout_constraintStart_toEndOf="@id/takeButton"
+        app:layout_constraintEnd_toStartOf="@id/notesButton"
+         />
 
     <Button
         android:id="@+id/notesButton"
         android:layout_width="70dp"
         android:layout_height="60dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style_20dp_rounded_corners"
         android:text="Notes"
         android:textColor="@color/hnWhite"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/skipButton" />
+        app:layout_constraintStart_toEndOf="@id/skipButton"
+        app:layout_constraintEnd_toStartOf="@id/cancelButton"
+        android:shadowColor = "#000000"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1" />
 
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="75dp"
         android:layout_height="60dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_style_20dp_rounded_corners"
         android:text="Cancel"
         android:textColor="@color/hnWhite"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/notesButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/notesButton"
+        android:shadowColor = "#000000"
+        android:shadowDx = "2"
+        android:shadowDy = "2"
+        android:shadowRadius = "1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -73,7 +73,6 @@
         android:id="@+id/prescriptionsListRecyclerView"
         android:layout_width="413dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
         android:background="@color/hnBlack"
         android:clipChildren="true"
         android:isScrollContainer="true"
@@ -94,6 +93,9 @@
         android:layout_height="55dp"
         android:layout_marginStart="3dp"
         android:layout_marginBottom="3dp"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        android:textColor="@color/hnWhite"
+
         android:text="List"
         app:layout_constraintBottom_toBottomOf="@id/prescriptionsBottomToolbar"
         app:layout_constraintStart_toStartOf="@id/prescriptionsBottomToolbar" />
@@ -103,6 +105,9 @@
         android:layout_width="100dp"
         android:layout_height="55dp"
         android:layout_marginBottom="3dp"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        android:textColor="@color/hnWhite"
+
         android:gravity="center"
         android:text="Edit"
         app:layout_constraintBottom_toBottomOf="@+id/prescriptionsBottomToolbar"
@@ -116,6 +121,8 @@
         android:layout_height="55dp"
         android:layout_marginEnd="3dp"
         android:layout_marginBottom="3dp"
+        android:background="@drawable/button_style_20dp_rounded_corners"
+        android:textColor="@color/hnWhite"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="@id/prescriptionsBottomToolbar"
         app:layout_constraintEnd_toEndOf="@+id/prescriptionsBottomToolbar" />
@@ -124,7 +131,6 @@
         android:id="@+id/InstructionsToolbar"
         android:layout_width="409dp"
         android:layout_height="30dp"
-        android:layout_marginStart="1dp"
         android:background="@drawable/gradient_hnbluelight_to_dark"
         android:minHeight="?attr/actionBarSize"
         app:layout_constraintEnd_toEndOf="parent"

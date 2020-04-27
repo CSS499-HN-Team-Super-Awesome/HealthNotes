@@ -22,7 +22,7 @@
 
     <!--notes-->
     <string name="contentDesc_medImage">Image of Medicine</string>
-    <string name="script_activity_instructions">Tap on any instance below</string>
+    <string name="script_activity_instructions">Tap on any instance below to open</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

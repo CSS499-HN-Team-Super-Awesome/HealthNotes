@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_hnwhite_to_grey"
+        android:orientation="horizontal"
+
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="3dp"
+            android:layout_marginTop="6dp"
+            app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/takeAtDateTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/app_default_txt"
+                android:textColor="@color/hnBlack"
+                android:textSize="24sp"
+                android:shadowColor = "#FFFFFF"
+                android:shadowDx = "2"
+                android:shadowDy = "2"
+                android:shadowRadius = "1"/>
+
+            <TextView
+                android:id="@+id/nameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:text="@string/app_default_txt"
+                android:textColor="@color/hnBlack"
+                android:textSize="24sp"
+                android:shadowColor = "#FFFFFF"
+                android:shadowDx = "2"
+                android:shadowDy = "2"
+                android:shadowRadius = "1"/>
+
+            <TextView
+                android:id="@+id/instructionsTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="@string/app_default_txt"
+                android:textColor="@color/hnBlack"
+                android:textSize="24sp"
+                android:shadowColor = "#FFFFFF"
+                android:shadowDx = "2"
+                android:shadowDy = "2"
+                android:shadowRadius = "1"/>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

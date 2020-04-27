@@ -51,11 +51,41 @@ public class PrescriptionsActivity extends AppCompatActivity implements
 
 
         ImageButton homeBtn = findViewById(R.id.homeButton);
+        TextView listBtn = findViewById(R.id.listButton);
+        TextView editBtn = findViewById(R.id.editButton);
+        TextView addBtn = findViewById(R.id.addButton);
+
         homeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d(TAG, "Home Button Clicked");
+
                 Intent homeIntent = new Intent(PrescriptionsActivity.this, HomeActivity.class);
                 startActivity(homeIntent);
+            }
+        });
+
+        listBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "List Button Clicked");
+
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Edit Button Clicked");
+
+            }
+        });
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "Add Button Clicked");
+
             }
         });
 
@@ -64,78 +94,10 @@ public class PrescriptionsActivity extends AppCompatActivity implements
 
         buildScriptTakeList(scriptList);
 
-        //ArrayList<Prescription> listToTake = buildScriptTakeList(scriptList);
-
         initRecyclerView(); //initialize the recyclerview
 
     } //end onCreate
 
-    /*
-        Method kicks the popup when a medication is selected from the take list in the Recycler view.
-        Method will fire the prescription fragment
-     */
-//    @RequiresApi(api = Build.VERSION_CODES.O)
-//    public void showPopUp(View view, final int position) {
-//        myDialog.setContentView(R.layout.fragment_prescription);
-//        TextView dueFieldTextView = (TextView) myDialog.findViewById(R.id.dueFieldTextView);
-//        TextView nameTextView = (TextView) myDialog.findViewById(R.id.nameTextView);
-//        TextView strengthTextView = (TextView) myDialog.findViewById(R.id.strengthFieldTextView);
-//        TextView instructionsTextView = (TextView) myDialog.findViewById(R.id.instructionsTextView);
-//        Button takeBtn = myDialog.findViewById(R.id.takeButton);
-//        Button skipBtn = myDialog.findViewById(R.id.skipButton);
-//        Button notesBtn = myDialog.findViewById(R.id.notesButton);
-//        Button cancelBtn = myDialog.findViewById(R.id.cancelButton);
-//        Prescription script = new Prescription(scriptListToTake.get(position));
-//
-//        //disable notes button as it is not implemented yet
-//        notesBtn.setEnabled(false);
-//
-//        //Disable take and skip buttons if medicine is not due or overdue
-//        if ( !script.isDue() && !script.isOverdue() ) {
-//            takeBtn.setEnabled(false);
-//            skipBtn.setEnabled(false);
-//        }//end if
-//
-//        //teke button action
-//        takeBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int takeIndex = position;
-//                Intent takeIntent = new Intent(PrescriptionsActivity.this, PrescriptionTake.class);
-//                takeIntent.putExtra("scriptList", scriptList);
-//                takeIntent.putExtra("scriptListToTake", scriptListToTake);
-//                takeIntent.putExtra( "takeIndex", takeIndex);
-//                startActivity(takeIntent);
-//            }
-//        });//end take OnClickListener
-//
-//        //skip button action
-//        skipBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });//end skip OnClickListener
-//
-//        //info button action
-//        notesBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });//end info OnClickListener
-//
-//        //cancel button action
-//        cancelBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                myDialog.dismiss();
-//            }
-//        });//end cancel OnClickListener
-//
-//        myDialog.show();
-//
-//    }//end Popup method
 
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -153,7 +115,6 @@ public class PrescriptionsActivity extends AppCompatActivity implements
         /* type, int amountQty, String amountUnit, boolean asDirected, String amountOtherDirection,
         int timingInterval, int timingAmount, boolean durationLimited, int durationInDays,
         boolean isAsNeeded, String asNeededFor, String notes)*/
-        //LocalDateTime cal = LocalDateTime.of(2020, 3, 17, 0,0,0);
 
         //OncePerDays(all options)
         scriptList.add(new Prescription("OnePerDayMorning", "10mg", "1 pill once a day",
@@ -269,18 +230,19 @@ public class PrescriptionsActivity extends AppCompatActivity implements
     @Override
     public void onNoteClick(int position) {
         Log.d(TAG, "Prescription element position: " + position + " was clicked");
-//        View view = null;
-        //launch fragment for individual script to take instance
-//        showPopUp(view, position);
-        Intent takeIntent = new Intent(PrescriptionsActivity.this, PrescriptionTake.class);
-        takeIntent.putExtra("scriptList", scriptList);
-        takeIntent.putExtra("scriptListToTake", scriptListToTake);
+
+        Intent takeIntent = new Intent(this, PrescriptionTake.class);
+//        takeIntent.putExtra("scriptList", scriptList);
+//        takeIntent.putExtra("scriptListToTake", scriptListToTake);
         takeIntent.putExtra( "takeIndex", position);
         startActivity(takeIntent);
+
+
     }
 
     @Override
     public void onClick(View v) {
+        Log.d(TAG, "Prescription element onClick");
 
     }
 }//end PrescriptionsActivity Class
