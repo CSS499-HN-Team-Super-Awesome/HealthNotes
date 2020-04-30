@@ -1,19 +1,28 @@
 package edu.udayton.cps499.healthnotes;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.util.Log;
 
-public class Databasehelper extends SQLiteOpenHelper {
+import java.util.ArrayList;
+import java.util.List;
+
+public class DatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "HealthNotesManager";
     private static final String TABLE_PROVIDERS = "Providers";
     private static final String TABLE_PRESCRIPTIONS = "Prescriptions";
     private static final String TABLE_USERS = "Users";
 
+    private static final String LOG = "DatabaseHelper";
+
     // Column names for all tables
     private static final String KEY_ID = "id";
     private static final String KEY_Name = "name";
+    private static final String KEY_CREATED_AT = "created_at";
 
     // Provider table column names
     private static final String KEY_ADDRESS = "address";
@@ -43,7 +52,7 @@ public class Databasehelper extends SQLiteOpenHelper {
             KEY_USERNAME + " Text," + KEY_PASSWORD + " Text," +
             KEY_CREATED_AT + " DATETIME" + ")";
 
-    public DatabaseHandler(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -56,39 +65,44 @@ public class Databasehelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int i, int ii) {
-        db.execSQL("DROP TABLE IF EXISTS" + TABLE_PROVIDERS);
-        onCreate(db);
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
     }
 
     void addProvider(Provider provider) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, provider.getName());
+        values.put(KEY_Name, provider.getName());
         //Add more values as necessary
 
 
-        db.insert(TABLE_PROVIDERS, null, values); db.close;
+        db.insert(TABLE_PROVIDERS, null, values);
     }
     Provider getProvider(int id) {
-        SQLiteDatabase db = db.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_PROVIDERS, new String[](KEY_NAME), new String[](String.valueOf(id)), null, null, null, null);
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TABLE_PROVIDERS + " WHERE "
+                + KEY_ID + " = " + KEY_Name;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        Provider provider = new Provider(Integer.parseInt(cursor.getString(0)));
+        Provider provider = new Provider();
+        provider.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)));
         return provider;
     }
-    public List < Provider > getAllProviders() {
-        List < Provider > providersList = new ArrayList < >() ;
+    public List< Provider > getAllProviders() {
+        List < Provider > providersList = new ArrayList< >() ;
 
-        String selectQuery = "SELECT *FROM" + TABLE_PROVIDERS;
+        String selectQuery = "SELECT *FROM " + TABLE_PROVIDERS;
 
-        SQLiteDatabase db = this.getWritableDatabase;
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if (cursor.moveToFirst) {
+        if (cursor.moveToFirst()) {
             do {
                 Provider provider = new Provider();
                 provider.setName(cursor.getString(0));
@@ -101,17 +115,17 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_Name, Provider.getName());
+        //values.put(KEY_Name, Provider.getName());
 
         // updating row
         return db.update(TABLE_PROVIDERS, values, KEY_ID + " = ?",
                 new String[] {
-                        String.valueOf(todo.getId())
+                    //    String.valueOf(provider.getId())
                 });
     }
-    public void deleteToDo(long ID) {
+    public void deleteProvider(long ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_TODO, KEY_ID + " = ?",
+        db.delete(TABLE_PROVIDERS, KEY_ID + " = ?",
                 new String[] {
                         String.valueOf(ID)
                 });
@@ -120,31 +134,37 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, prescription.getScriptName());
+        values.put(KEY_Name, prescription.getScriptName());
         // Add new values as necessary
 
-        db.insert(TABLE_PRESCRIPTIONS, null, values); db.close;
+        db.insert(TABLE_PRESCRIPTIONS, null, values);
     }
-    Provider getPrescription(int id) {
-        SQLiteDatabase db = db.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_PRESCRIPTIONS, new String[](KEY_NAME), new String[](String.valueOf(id)), null, null, null, null);
+    Prescription getPrescription(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TABLE_PRESCRIPTIONS + " WHERE "
+                + KEY_ID + " = " + KEY_Name;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        Prescription prescription = new Prescription(Integer.parseInt(cursor.getString(0)));
-        return provider;
+        Prescription prescription = new Prescription();
+        prescription.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)));
+        return prescription;
     }
-    public List < Prescriptions > getAllPrescriptions() {
-        List < Prescriptions > prescriptionsList = new ArrayList < > ();
+    public List < Prescription > getAllPrescriptions() {
+        List < Prescription > prescriptionsList = new ArrayList < > ();
 
-        String selectQuery = "SELECT *FROM" + TABLE_PRESCRIPTIONS;
+        String selectQuery = "SELECT * ,FROM" + TABLE_PRESCRIPTIONS;
 
-        SQLiteDatabase db = this.getWritableDatabase;
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if (cursor.moveToFirst) {
+        if (cursor.moveToFirst()) {
             do {
-                Prescritption prescription = new Prescription();
+                Prescription prescription = new Prescription();
                 prescription.setName(cursor.getString(0));
                 prescriptionsList.add(prescription);
             } while (cursor.moveToNext());
@@ -155,17 +175,17 @@ public class Databasehelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, prescription.getScriptName();
+        values.put(KEY_Name, prescription.getScriptName());
 
         // updating row
         return db.update(TABLE_PRESCRIPTIONS, values, KEY_ID + " = ?",
                 new String[] {
-                        String.valueOf(todo.getId())
+                        String.valueOf(prescription.getId())
                 });
     }
     public void deletePrescription(long ID) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_TODO, KEY_ID + " = ?",
+        db.delete(TABLE_PRESCRIPTIONS, KEY_ID + " = ?",
                 new String[] {
                         String.valueOf(ID)
                 });
@@ -174,52 +194,59 @@ public class Databasehelper extends SQLiteOpenHelper {
     void addUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, user.getName());
+        values.put(KEY_Name, user.getName());
         // Add new values as necessary
 
 
-        db.insert(TABLE_USERS, null, values); db.close;
+        db.insert(TABLE_USERS, null, values);
     }
-    Provider getUser(int id) {
-        SQLiteDatabase db = db.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_USERS, new String[](KEY_NAME), new String[](String.valueOf(id)), null, null, null, null);
+    User getUser(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TABLE_USERS + " WHERE "
+                + KEY_ID + " = " + user_id;
+
+        Log.e(LOG, selectQuery);
+
+        Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor != null) {
             cursor.moveToFirst();
         }
-        User user = new User(Integer.parseInt(cursor.getString(0)));
-        return provider;
+        User user = new User();
+        user.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)))
+
+        return user;
     }
-    public List < User > getAllUsers() {
-        List < Users > usersList = new ArrayList < >() ;
+    public List <User> getAllUsers() {
+        List <User> usersList = new ArrayList < >() ;
 
-        String selectQuery = "SELECT *FROM" + TABLE_USERS;
+        String selectQuery = "SELECT *, FROM" + TABLE_USERS;
 
-        SQLiteDatabase db = this.getWritableDatabase;
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
 
-        if (cursor.moveToFirst) {
+        if (cursor.moveToFirst()) {
             do {
                 Provider provider = new Provider();
                 provider.setName(cursor.getString(0));
-                providersList.add(provider);
+                usersList.add(user);
             }
             while (cursor.moveToNext());
         }
-        return providersList;
+        return usersList;
     }
     public int updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(KEY_NAME, user.getName());
+        values.put(KEY_Name, user.getName());
 
         // updating row
         return db.update(TABLE_PRESCRIPTIONS, values, KEY_ID + " = ?",
                 new String[] {
-                        String.valueOf(todo.getId())
+                        String.valueOf(user.getId())
                 });
     }
-    public void deleteToDo(long ID) {
+    public void deleteUser(long ID) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_USERS, KEY_ID + " = ?",
                 new String[] {
