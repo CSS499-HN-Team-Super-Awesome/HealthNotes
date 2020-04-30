@@ -27,14 +27,14 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-//        //onClick of Edit Profile Button
-//        editProfileBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                openEditProfileActivity();
-//            }
-//        });
+        //onClick of Edit Profile Button
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openEditProfileActivity();
+            }
+        });
 
 //        THIS BLOCK BELOW IS A LITTLE IFFY, SO IT'S COMMENTED OUT FOR NOW
 //        //onClick of Log Out Button
@@ -54,17 +54,17 @@ public class ProfileActivity extends AppCompatActivity {
 
     } // end openHomeActivity
 
-//    // Navigates from Profile -> EditProfile
-//    public void openEditProfileActivity() {
-//        Intent intent = new Intent(this, EditProfile.class);
-//        startActivity(intent);
-//
-//    } // end openEditProfileActivity
+    // Navigates from Profile -> EditProfile
+    public void openEditProfileActivity() {
+        Intent intent = new Intent(this, EditProfileActivity.class);
+        startActivity(intent);
+
+    } // end openEditProfileActivity
 
 //    THIS BLOCK BELOW IS A LITTLE IFFY, SO IT'S COMMENTED OUT FOR NOW
 //    // Navigates from Profile -> SignIn
 //    public void openSignInActivity() {
-//        Intent intent = new Intent(this, SignIn.class);
+//        Intent intent = new Intent(this, SignInActivity.class);
 //        startActivity(intent);
 //
 //    } // end openSignInActivity
