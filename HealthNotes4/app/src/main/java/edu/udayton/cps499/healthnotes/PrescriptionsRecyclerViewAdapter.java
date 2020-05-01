@@ -106,30 +106,30 @@ public class PrescriptionsRecyclerViewAdapter extends RecyclerView.Adapter<Presc
         TextView instructions = holder.itemView.findViewById(R.id.instructionsTextView);
 
         //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy");
-        LocalDateTime dateTime = scriptListToTake.get(position).getScriptNextTakeDate();
+        LocalDateTime nextTakeDate = scriptListToTake.get(position).getScriptNextTakeDate();
 
         DateTimeFormatter formmat1 = DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH);
         DateTimeFormatter formmat2 = DateTimeFormatter.ofPattern("MMM dd hh:mm a", Locale.ENGLISH);
 
-        String displayScriptScheduledDate = formmat2.format(dateTime);
-        String displayScriptScheduledTime = formmat1.format(dateTime);
+        String displayScriptScheduledDate = formmat2.format(nextTakeDate);
+        String displayScriptScheduledTime = formmat1.format(nextTakeDate);
         String displayScriptDue = "";
 
-        int dayToTake = dateTime.getDayOfMonth();
-        int dayNow = LocalDateTime.now().getDayOfMonth();
+//        int dayToTake = nextTakeDate.getDayOfMonth();
+//        int dayNow = LocalDateTime.now().getDayOfMonth();
 
-        if ( dayNow == dayToTake ) {
-            displayScriptDue += "Today at: " + displayScriptScheduledTime;
-        }
-        else if ( dayNow + 1 == dayToTake ) {
-            displayScriptDue += "Tomorrow at: " + displayScriptScheduledTime;
-        }
-        else if ( dayNow - 1 == dayToTake )  {
-            displayScriptDue += "Yesterday at: " + displayScriptScheduledTime;
-        }
-        else {
+//        if ( nextTakeDate.getDayOfMonth() == LocalDateTime.now().getDayOfMonth() ) {
+//            displayScriptDue += "Today at: " + displayScriptScheduledTime;
+//        }
+//        else if ( nextTakeDate.getDayOfMonth() == LocalDateTime.now().plusDays(1).getDayOfMonth() ) {
+//            displayScriptDue += "Tomorrow at: " + displayScriptScheduledTime;
+//        }
+//        else if ( nextTakeDate.getDayOfMonth() == LocalDateTime.now().minusDays(1).getDayOfMonth() )  {
+//            displayScriptDue += "Yesterday at: " + displayScriptScheduledTime;
+//        }
+//        else {
             displayScriptDue += displayScriptScheduledDate;
-        }
+//        }
 
         dateTextView.setText(displayScriptDue);
         nameTextView.setText(scriptListToTake.get(position).getScriptName());

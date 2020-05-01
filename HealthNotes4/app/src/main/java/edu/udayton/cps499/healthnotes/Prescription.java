@@ -2,6 +2,7 @@
     Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
     Author: Michael Graham
     Instructor Tom Ongwere
+
  */
 package edu.udayton.cps499.healthnotes;
 
@@ -11,6 +12,7 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
@@ -376,20 +378,23 @@ public class Prescription implements Serializable {
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         20, 0, 0);
                             }
-                        } else { //else it has been set for today already
+                        } else if ( scriptNextTakeDate.getDayOfMonth() == now.getDayOfMonth() ){ //else it has been set for today already
                             //check if nextTakeDate is before noon and if not set for tonight else don't set again.
                             if ( scriptNextTakeDate.isBefore( LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
-                                    12, 0, 0) ) ) {
+                                    19, 59, 59) ) ) {
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         20, 0, 0);
                             }
+                        } else { //set for tomorrow as next take is 8pm today
+                            nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                    now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 8, 00, 00);
                         }
                         break;
                     case (3)://three times a day 8am, 2pm, 8pm
-                        //Log.d(TAG, "3X nextTakeDate: " + scriptNextTakeDate);
+                        Log.d(TAG, "3X nextTakeDate: " + scriptNextTakeDate);
                         //check if not set for today and if not then set for first take of the day.
                         if ( scriptNextTakeDate.isBefore(todayAtZeroHour) ) {
-                            //Log.d(TAG, "3X perDay Set first for today");
+                            Log.d(TAG, "3X perDay Set first for today");
                             //confirm now is no later than noon if so set for this morning
                             if (now.getHour() < 12) {
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
@@ -404,30 +409,31 @@ public class Prescription implements Serializable {
                             }
                         } else if (scriptNextTakeDate.getDayOfMonth() == now.getDayOfMonth() &&
                                 scriptNextTakeDate.getHour() < 19) { //else set for second or third of today only if not already set
-                            //Log.d(TAG, "3X perDay Set for today");
+                            Log.d(TAG, "3X perDay Set for today");
                             //if scriptNextTakeDate is before noon set for 2pm
-                            if (scriptNextTakeDate.getHour() < 14 && now.getHour() < 17) { //if today, and the hour of next Take is before 2pm and now is bfore 5pm
+                            if (scriptNextTakeDate.getHour() < 14 && now.getHour() < 17) { //if today, and the hour of next Take is before 2pm and now is before 5pm
 
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         14, 0, 0);
                             }
-                            else if (scriptNextTakeDate.getHour() < 20 && now.getHour() < 23){ //if today, and the hour of next Take is before 8pm and now is bfore 11pm
+                            else if (scriptNextTakeDate.getHour() < 20 && now.getHour() < 23){ //if today, and the hour of next Take is before 8pm and now is before 11pm
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         20, 0, 0);
                             }
                         } else { //else set for tomorrow
-                            //Log.d(TAG, "3X perDay Set for tomorrow");
+                            Log.d(TAG, "3X perDay Set for tomorrow");
 
                             if (scriptNextTakeDate.getDayOfMonth() == now.getDayOfMonth()) { //if dateNextTake is today set for tomorrow morning
-                                     nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                             8, 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 8, 00, 00);
+
                             } else { //script next take is already set for tomorrow test if it is set to before noon if so set to 2pp
                                 if (scriptNextTakeDate.getHour() < 12) {
-                                    nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                            14, 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 14, 00, 00);
                                 } else {
-                                    nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                            20, 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 20, 00, 00);
                                 }
                             }
                         }
@@ -447,7 +453,7 @@ public class Prescription implements Serializable {
                             else if (now.getHour() < 14) {
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         12, 0, 0);
-                            }//els check if before 6pm if so set to 4pm
+                            }//else check if before 6pm if so set to 4pm
                             else if (now.getHour() < 18) {
                                 nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.getDayOfMonth(),
                                         16, 0, 0);
@@ -473,18 +479,18 @@ public class Prescription implements Serializable {
                             Log.d(TAG, "4X perDay Set for tomorrow");
 
                             if (scriptNextTakeDate.getDayOfMonth() == now.getDayOfMonth()) { //if dateNextTake is today set for tomorrow morning
-                                nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                        8, 0, 0);
+                                nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                        now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 8, 00, 00);
                             } else { //script next take is already set for tomorrow test if it is set to before 10a if so set to 12pm
                                 if (scriptNextTakeDate.getHour() < 10) {
-                                    nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                            12, 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 12, 00, 00);
                                 } else if (scriptNextTakeDate.getHour() < 14){
-                                    nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                            16 , 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 16, 00, 00);
                                 } else {
-                                    nextTake = LocalDateTime.of(now.getYear(), now.getMonth(), now.plusDays(1).getDayOfMonth(),
-                                            20, 0, 0);
+                                    nextTake = LocalDateTime.of(now.plusDays(1).getYear(),
+                                            now.plusDays(1).getMonth(), now.plusDays(1).getDayOfMonth(), 20, 00, 00);
                                 }
                             }
                         }

@@ -250,9 +250,9 @@ public class PrescriptionsActivity extends AppCompatActivity implements
     }
 
 
-    public int takeDialogPop () {
-
-    }
+//    public int takeDialogPop () {
+//
+//    }
 
 
 }//end PrescriptionsActivity Class
