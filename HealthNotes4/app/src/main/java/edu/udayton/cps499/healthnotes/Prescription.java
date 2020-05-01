@@ -230,6 +230,9 @@ public class Prescription implements Serializable {
         this.scriptNextTakeDate = scriptNextTakeDate;
     }
 
+    /*
+    calcNexTakeDate returns a LocalDateTime value of the next instance for a medicine to be taken.  It takes
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private LocalDateTime calcNextTakeDate() {
         Log.d(TAG, "calcNextTakeDate init interval " + scriptInstruction.getTimingInterval() );
@@ -486,24 +489,30 @@ public class Prescription implements Serializable {
                             }
                         }
                         break;
+                    //5X perday was not coded, but would follow the same testing as above.
                     case (5):
-                        Log.d(TAG, "tag 2");
+                        Log.d(TAG, "5X perDay");
                         break;
+                    //6X perday was not coded, but would follow the same testing as above.
                     default: //default six
-                        Log.d(TAG, "tag 3");
+                        Log.d(TAG, "6X perDay");
 
                         break;
                 }
 
                 break;
-
+            //EveryXDays was not coded as we ran out of time and it was set on a
+            //  low priority in order to try and get the moving of data between activities working.
             case EVERYXDAYS:
-                Log.d(TAG, "tag 5");
+                Log.d(TAG, "EveryXDays");
 
                 break;
 
+            //AsDirected was not coded as we ran out of time and it was set on a
+            //  low priority in order to try and get the moving of data between activities working.
+            //Theory on this was that the user would identify how often this would pop up.
             default:
-                Log.d(TAG, "tag 6");
+                Log.d(TAG, "AsDirected");
 
                 break;
         }

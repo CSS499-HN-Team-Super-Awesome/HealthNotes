@@ -99,7 +99,10 @@ public class PrescriptionsActivity extends AppCompatActivity implements
     } //end onCreate
 
 
-
+    /*
+    Method was built to create test data for the Prescription activities.  This will no longer be needed once
+      persistent memory is setup in the form of a persistent database within the app.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void initArrayList() {
         Log.d(TAG, "initArrayList");
@@ -245,4 +248,11 @@ public class PrescriptionsActivity extends AppCompatActivity implements
         Log.d(TAG, "Prescription element onClick");
 
     }
+
+
+    public int takeDialogPop () {
+
+    }
+
+
 }//end PrescriptionsActivity Class
