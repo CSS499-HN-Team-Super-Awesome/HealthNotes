@@ -73,8 +73,8 @@ public class PrescriptionsAdd01BasicInfo extends AppCompatActivity {
                 String dateTaken = scriptDateTaken.toString() + 'T' + scriptTimeText.toString();
                 newScript.setScriptLastTakenDate( LocalDateTime.parse( dateTaken ));
 
-//                newScript.setId(Integer.parseInt(rxNumber.toString()));
-
+                //build instructions based on category
+                //this will be moved to a second activity eventually or use a system where it could all fit within the one screen.
                 if ( everyXHoursButton.isChecked() ) {
                     newScript.setScriptInstruction(new PrescriptionsInstruction(1, 1, "Pill", false, null, 1, Integer.parseInt(intervalHours.toString()),
                             false, -1, false, "", scriptNotes.toString(), new int[] {1,0,0,0,0,0}));
@@ -109,19 +109,24 @@ public class PrescriptionsAdd01BasicInfo extends AppCompatActivity {
             }
         });//end camera onclicklistener
 
-    }
+    }// end onCreate
 
+    /*
+    method used to add the script to the Database.
+    NOTE: Does not appear to be working at this time.  The database came online at the last day before this was turned in.
+     */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void addScript(Prescription script) {
-
         DatabaseHelper dbHandler = new DatabaseHelper(this);
         dbHandler.addPrescription(script);
-
-
     }
 
+    /*
+
+     */
     private void goHome() {
         Intent homeIntent = new Intent(PrescriptionsAdd01BasicInfo.this, HomeActivity.class);
         startActivity(homeIntent);
-    }
-}
+    } //end
+
+}//end class
