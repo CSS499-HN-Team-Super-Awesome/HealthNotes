@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class EditProfileActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
-        Button homeBtn = (Button) findViewById(R.id.homeButton);
+        ImageButton homeBtn = (ImageButton) findViewById(R.id.homeButton);
         Button saveBtn = (Button) findViewById(R.id.saveButton);
         Button cancelBtn = (Button) findViewById(R.id.cancelButton);
 

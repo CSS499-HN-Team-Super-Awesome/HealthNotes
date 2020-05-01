@@ -12,11 +12,12 @@ import android.util.Log;
 import androidx.annotation.RequiresApi;
 
 import java.io.Serializable;
+import java.security.Key;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RequiresApi(api = Build.VERSION_CODES.O)
-public class Prescription implements Serializable {
+public class Prescription {
     //vars
     private static final String TAG = "Prescription Object";
 
@@ -102,6 +103,10 @@ public class Prescription implements Serializable {
         scriptProvider = provider;
         scriptInstruction = newInstructions;
     }//end constructor with new instructions
+
+    public Prescription(String name) {
+        scriptName = name;
+    }//end constructor with name only
 
     public int getId() {
         return id;
@@ -570,4 +575,7 @@ public class Prescription implements Serializable {
     }//end take
 
 
+    public int getID() {
+        return id;
+    }
 }//end class

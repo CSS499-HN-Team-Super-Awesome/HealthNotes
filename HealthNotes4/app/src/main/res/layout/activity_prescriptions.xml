@@ -73,7 +73,7 @@
         android:id="@+id/prescriptionsListRecyclerView"
         android:layout_width="413dp"
         android:layout_height="0dp"
-        android:background="@color/hnBlack"
+        android:background="@color/hnWhite"
         android:clipChildren="true"
         android:isScrollContainer="true"
         app:layout_constraintBottom_toTopOf="@+id/prescriptionsBottomToolbar"

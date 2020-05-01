@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
@@ -20,7 +22,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        Button profileBtn = (Button) findViewById(R.id.profileButton);
+
+
+        ImageButton profileBtn = (ImageButton) findViewById(R.id.profileButton);
         Button prescriptionBtn = (Button) findViewById(R.id.prescriptionButton);
         Button medCareBtn = (Button) findViewById(R.id.medicalCareButton);
         Button medConditionBtn = (Button) findViewById(R.id.medicalConditionsButton);

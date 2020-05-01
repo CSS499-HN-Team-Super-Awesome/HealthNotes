@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Course: CPS 499-14  Spring 2020 Semester @ The University of Dayton
+    Author: Michael Graham
+    Instructor Tom Ongwere
+-->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PrescriptionsAdd01BasicInfo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/prescriptionsTopToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="ADD SCRIPT"
+            android:textColor="@color/hnWhite"
+            android:textSize="30sp"></TextView>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/homeButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/ic_home_white_48dp"
+        android:contentDescription="@string/btn_home"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home_white_48dp"
+        tools:ignore="MissingConstraints,VectorDrawableCompat" />
+
+    <EditText
+        android:id="@+id/scriptNamePlainText"
+        android:layout_width="346dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Prescription Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prescriptionsTopToolbar" />
+
+    <EditText
+        android:id="@+id/strengthNamePlainText"
+        android:layout_width="346dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Strength (Example: 5mg)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scriptNamePlainText" />
+
+    <EditText
+        android:id="@+id/datePrescribed"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Date Prescribed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strengthNamePlainText" />
+
+    <EditText
+        android:id="@+id/lastDateTaken"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="date"
+        android:hint="Last Taken yyyy-MM-dd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.161"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/datePrescribed" />
+
+    <EditText
+        android:id="@+id/lastTakenTime"
+        android:layout_width="119dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="12dp"
+        android:ems="10"
+        android:inputType="time"
+        android:hint="Time hh:mm"
+        app:layout_constraintStart_toEndOf="@+id/lastDateTaken"
+        app:layout_constraintTop_toBottomOf="@+id/datePrescribed" />
+
+    <ImageButton
+        android:id="@+id/scriptImageButton"
+        android:layout_width="99dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="276dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastDateTaken"
+        app:srcCompat="@drawable/ic_add_a_photo_black_48dp" />
+
+    <Button
+        android:id="@+id/addButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginBottom="16dp"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/cancelButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="37dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lastDateTaken">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="81dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/freqEveryXHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="top" />
+
+            <RadioButton
+                android:id="@+id/freqXTimesPerDay"
+                android:layout_width="wrap_content"
+                android:layout_height="46dp"
+                android:gravity="bottom" />
+
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/EveryTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="25dp"
+        android:text="Every"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/lastDateTaken" />
+
+    <TextView
+        android:id="@+id/HoursTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="25dp"
+        android:text="Hours"
+        app:layout_constraintStart_toEndOf="@+id/hoursEditText"
+        app:layout_constraintTop_toBottomOf="@+id/lastDateTaken" />
+
+    <TextView
+        android:id="@+id/timesADayTextView"
+        android:layout_width="110dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Times A Day"
+        app:layout_constraintStart_toEndOf="@+id/xTimesADayEditText"
+        app:layout_constraintTop_toBottomOf="@+id/hoursEditText" />
+
+    <EditText
+        android:id="@+id/hoursEditText"
+        android:layout_width="61dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="#"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/EveryTextView"
+        app:layout_constraintTop_toBottomOf="@+id/lastDateTaken" />
+
+    <EditText
+        android:id="@+id/xTimesADayEditText"
+        android:layout_width="61dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="#"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/EveryTextView" />
+
+    <EditText
+        android:id="@+id/notesEditText"
+        android:layout_width="390dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Notes"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.238"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/xTimesADayEditText" />
+
+    <EditText
+        android:id="@+id/rxNumberEditText"
+        android:layout_width="174dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="4dp"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="RX #"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesEditText" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

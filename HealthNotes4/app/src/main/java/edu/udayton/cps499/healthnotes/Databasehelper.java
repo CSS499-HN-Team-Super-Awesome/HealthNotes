@@ -5,7 +5,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.os.Build;
 import android.util.Log;
+
+import androidx.annotation.RequiresApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,6 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                         String.valueOf(ID)
                 });
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     void addPrescription(Prescription prescription) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -139,9 +143,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_PRESCRIPTIONS, null, values);
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     Prescription getPrescription(int id) {
+        Log.d(LOG, "getPrescription start");
+
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT  * FROM " + TABLE_PRESCRIPTIONS + " WHERE "
+        String selectQuery = "SELECT * FROM " + TABLE_PRESCRIPTIONS + " WHERE "
                 + KEY_ID + " = " + KEY_Name;
 
         Log.e(LOG, selectQuery);
@@ -150,27 +157,43 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor != null) {
             cursor.moveToFirst();
         }
+
         Prescription prescription = new Prescription();
-        prescription.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)));
+        prescription.setScriptName(cursor.getString(cursor.getColumnIndex(KEY_Name)));
+
+        Log.d(LOG, "getPrescription end");
+
         return prescription;
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public List < Prescription > getAllPrescriptions() {
+        Log.d(LOG, "getAllPrescriptions start");
+
         List < Prescription > prescriptionsList = new ArrayList < > ();
 
-        String selectQuery = "SELECT * ,FROM" + TABLE_PRESCRIPTIONS;
+        String selectQuery = "SELECT * FROM " + TABLE_PRESCRIPTIONS;
+        Log.d(LOG, "getAllPrescriptions step1");
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
+        Log.d(LOG, "getAllPrescriptions step2");
+
 
         if (cursor.moveToFirst()) {
             do {
                 Prescription prescription = new Prescription();
-                prescription.setName(cursor.getString(0));
+                prescription.setScriptName(cursor.getString(0));
                 prescriptionsList.add(prescription);
+                Log.d(LOG, "getAllPrescriptions step3");
+
             } while (cursor.moveToNext());
         }
+
+        Log.d(LOG, "getAllPrescriptions end");
+
         return prescriptionsList;
     }
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public int updatePrescription(Prescription prescription) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -200,7 +223,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         db.insert(TABLE_USERS, null, values);
     }
-    User getUser(int id) {
+    public User getUser(int user_id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + TABLE_USERS + " WHERE "
                 + KEY_ID + " = " + user_id;
@@ -212,7 +235,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             cursor.moveToFirst();
         }
         User user = new User();
-        user.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)))
+        user.setName(cursor.getString(cursor.getColumnIndex(KEY_Name)));
 
         return user;
     }
@@ -226,8 +249,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                Provider provider = new Provider();
-                provider.setName(cursor.getString(0));
+                User user = new User();
+                user.setName(cursor.getString(0));
                 usersList.add(user);
             }
             while (cursor.moveToNext());

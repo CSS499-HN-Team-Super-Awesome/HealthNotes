@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Button homeBtn = (Button) findViewById(R.id.homeButton);
+        ImageButton homeBtn = (ImageButton) findViewById(R.id.homeButton);
         Button editProfileBtn = (Button) findViewById(R.id.editProfileButton);
         Button logOutBtn = (Button) findViewById(R.id.logOutButton);
 

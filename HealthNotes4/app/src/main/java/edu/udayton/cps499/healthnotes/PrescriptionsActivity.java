@@ -7,6 +7,7 @@ package edu.udayton.cps499.healthnotes;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import org.w3c.dom.Text;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class PrescriptionsActivity extends AppCompatActivity implements
@@ -31,6 +33,9 @@ public class PrescriptionsActivity extends AppCompatActivity implements
 
     //VARS
     private static final String TAG = "PrescActivity";
+    private static final String DATABASE_NAME = "HealthNotesManager";
+    private static final String TABLE_PROVIDERS = "Providers";
+    private static final String TABLE_PRESCRIPTIONS = "Prescriptions";
     Dialog myDialog;
 
     //create example data
@@ -86,17 +91,53 @@ public class PrescriptionsActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 Log.d(TAG, "Add Button Clicked");
 
+                addScript();
+
             }
         });
 
         //initialize the ArrayLists
         initArrayList(); //<---adding items to the ArrayLists breaks the program
 
+
+//        Log.d(TAG, "buildScriptSourceList");
+//        buildScriptSourceList();
+
+        Log.d(TAG, "buildScriptTakeList");
         buildScriptTakeList(scriptList);
 
+        Log.d(TAG, "initRecyclerView");
         initRecyclerView(); //initialize the recyclerview
 
     } //end onCreate
+
+
+    /*
+    Method pulls all prescriptions from the DB and puts them into the list of scripts
+     */
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void buildScriptSourceList() {
+        //trying to catch initial db being empty
+        try {
+            String query = "Select*FROM " + TABLE_PRESCRIPTIONS;
+            DatabaseHelper dbHandler = new DatabaseHelper(this);
+            List<Prescription> tempList = dbHandler.getAllPrescriptions();
+
+            for (Prescription script: tempList) {
+                scriptList.add(script);
+            }
+        } //end try and if there is an error popp to add
+        catch ( Exception e ) {
+            addScript();
+        }
+
+
+    }
+
+    private void addScript() {
+        Intent intent = new Intent(this, PrescriptionsAdd01BasicInfo.class);
+        startActivity(intent);
+    }
 
 
     /*
