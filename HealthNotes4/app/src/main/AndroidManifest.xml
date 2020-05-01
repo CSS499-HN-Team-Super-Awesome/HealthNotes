@@ -17,6 +17,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PrescriptionTake"
+            android:name=".EditProfileActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".SubHome2Activity"

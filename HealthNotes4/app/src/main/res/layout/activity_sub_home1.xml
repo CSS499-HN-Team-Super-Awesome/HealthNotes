@@ -26,6 +26,16 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <!--Header button (Home)-->
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintStart_toStartOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!--First button (Appointments)-->
     <Button
         android:id="@+id/appointmentsButton"

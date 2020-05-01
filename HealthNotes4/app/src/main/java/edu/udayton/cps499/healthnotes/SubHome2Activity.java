@@ -13,8 +13,18 @@ public class SubHome2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_home2);
 
+        Button homeBtn = (Button) findViewById(R.id.homeButton);
         Button medConditionsBtn = (Button) findViewById(R.id.medicalConditionsButton);
         Button notesBtn = (Button) findViewById(R.id.notesButton);
+
+        //onClick of Home Button
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openHomeActivity();
+            }
+        });
 
         //onClick of Medical Conditions Button
         medConditionsBtn.setOnClickListener(new View.OnClickListener() {
@@ -36,6 +46,13 @@ public class SubHome2Activity extends AppCompatActivity {
             }
         });
     } //end onCreate
+
+    // Navigates from SubHome2 -> Home
+    public void openHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+
+    } // end openHomeActivity
 
     // DOESN'T EXIST YET
 //    // Navigates from SubHome2 -> Medical Conditions

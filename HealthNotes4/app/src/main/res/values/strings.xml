@@ -13,6 +13,10 @@
     <string name="btn_notes">Notes</string>
     <string name="btn_info">Info</string>
 
+    <!--First/Last name of User -->
+    <string name="first">Dylan</string>
+    <string name="last">Anderson</string>
+
     <!--Default Text-->
     <string name="app_default_txt">Default</string>
 
