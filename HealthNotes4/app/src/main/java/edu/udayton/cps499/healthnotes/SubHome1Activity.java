@@ -13,9 +13,19 @@ public class SubHome1Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_home1);
 
+        Button homeBtn = (Button) findViewById(R.id.homeButton);
         Button appointmentsBtn = (Button) findViewById(R.id.appointmentsButton);
         Button doctorsBtn = (Button) findViewById(R.id.doctorsButton);
         Button medHistoryBtn = (Button) findViewById(R.id.medicalHistoryButton);
+
+        //onClick of Home Button
+        homeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openHomeActivity();
+            }
+        });
 
         //onClick of Appointments Button
         appointmentsBtn.setOnClickListener(new View.OnClickListener() {
@@ -47,6 +57,13 @@ public class SubHome1Activity extends AppCompatActivity {
             }
         });
     } //end onCreate
+
+    // Navigates from SubHome1 -> Home
+    public void openHomeActivity() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+
+    } // end openHomeActivity
 
     // DOESN'T EXIST YET
 //    // Navigates from SubHome1 -> Appointments

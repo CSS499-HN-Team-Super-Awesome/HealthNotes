@@ -20,9 +20,19 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Button profileBtn = (Button) findViewById(R.id.profileButton);
         Button prescriptionBtn = (Button) findViewById(R.id.prescriptionButton);
         Button medCareBtn = (Button) findViewById(R.id.medicalCareButton);
         Button medConditionBtn = (Button) findViewById(R.id.medicalConditionsButton);
+
+        //onClick of Profile Button
+        profileBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                openProfileActivity();
+            }
+        });
 
         //onClick of Prescription Button
         prescriptionBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +61,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }//end onCreate
+
+    // Navigates from Home -> Profile
+    public void openProfileActivity() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+
+    } // end openProfileActivity
 
     // Navigates from Home -> Prescriptions
     public void openPrescriptionsActivity() {

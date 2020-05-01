@@ -33,6 +33,16 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <!--Header button (Profile)-->
+    <Button
+        android:id="@+id/profileButton"
+        android:layout_width="80dp"
+        android:layout_height="55dp"
+        android:text="Profile"
+        app:layout_constraintBottom_toBottomOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintStart_toStartOf="@+id/prescriptionsTopToolbar"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <!--First button (Prescription Tracking)-->
     <Button
         android:id="@+id/prescriptionButton"
