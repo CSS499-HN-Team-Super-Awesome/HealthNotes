@@ -95,6 +95,7 @@ public class PrescriptionsAdd01BasicInfo extends AppCompatActivity {
             }
         });
 
+        //currently will only open the camera and allow to take a picture.  Has not been implemented to store the image and use it within the app.
         scriptPicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,8 +113,13 @@ public class PrescriptionsAdd01BasicInfo extends AppCompatActivity {
     }// end onCreate
 
     /*
+
     method used to add the script to the Database.
     NOTE: Does not appear to be working at this time.  The database came online at the last day before this was turned in.
+
+    Method will add Prescriptions to the Database, but it is not functional at this time.  Database came online too late in the
+      project to get it up and running by the due date.
+
      */
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void addScript(Prescription script) {
@@ -122,6 +128,9 @@ public class PrescriptionsAdd01BasicInfo extends AppCompatActivity {
     }
 
     /*
+
+    Method sends user back to the Home Screen.
+    NOTE: Yes it is a reference to E.T. If you have not seen it, DO go see it!
 
      */
     private void goHome() {

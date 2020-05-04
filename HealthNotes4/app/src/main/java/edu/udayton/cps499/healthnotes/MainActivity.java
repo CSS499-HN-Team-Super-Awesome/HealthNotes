@@ -3,6 +3,9 @@
     Author: Michael Graham
     Instructor Tom Ongwere
 
+    NOTE: This was created early on and in conjunction with the RegisterActivity activity to test connectivity
+        to Firebase and the sign-in/authentication within Google.
+
  */
 
 package edu.udayton.cps499.healthnotes;
